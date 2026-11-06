@@ -1,0 +1,80 @@
+---
+// Section 4: Modern Bento FAQ Accordion with GSAP items reveal
+const faqs = [
+  {
+    q: "What does YP Nexus Foundation stand for?",
+    a: "YP Nexus Foundation (Paryay Parisanstha) is a registered charitable trust in Pune, India. It provides alternatives towards an ecologically sensitive life in the spheres of learning, ecological habitats, research, and community livelihoods.",
+    category: "Foundation"
+  },
+  {
+    q: "Is Paryay Dschool recognized by the government?",
+    a: "Yes. Learners study via open-schooling frameworks and can appear for official 10th and 12th board exams through NIOS (National Institute of Open Schooling) or MsBOS (Maharashtra State Board of Open Schooling), fully accredited across all universities.",
+    category: "Accreditation"
+  },
+  {
+    q: "How does the 1:6 mentor-to-learner ratio benefit a child?",
+    a: "In traditional schools, one teacher manages 40 to 60 children. At Paryay Dschool, one experienced mentor closely guides and documents the individual processes of only 6 learners, ensuring deep personal mentoring.",
+    category: "Mentoring"
+  },
+  {
+    q: "How can parents enroll or meet the mentors?",
+    a: "We welcome interested families for an open, mutual dialogue to understand the learner's journey, capabilities, and expectations. You can reach out through our contact form or visit our Pune center.",
+    category: "Admissions"
+  },
+  {
+    q: "What are the initiatives under PiSELT and TurTle Media?",
+    a: "PiSELT conducts leadership training and grassroots ecological research, while TurTle Media produces audio-visual documentaries and publications documenting community environmental alternatives.",
+    category: "Initiatives"
+  }
+];
+---
+
+<section id="faq" class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-canvas">
+  <div class="max-w-5xl mx-auto space-y-10 sm:space-y-14">
+    
+    <!-- Section Header -->
+    <div class="reveal-item text-center max-w-2xl mx-auto space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-subtle border border-lime-accent/50 text-[11px] font-mono uppercase tracking-wider text-brand-dark font-bold">
+        <span>04 / Inquiries &amp; Answers</span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink-900 tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+        Key details about our alternative learning methodology, official accreditation, and admissions.
+      </p>
+    </div>
+
+    <!-- Modern Bento Accordions -->
+    <div class="space-y-3 sm:space-y-4">
+      {faqs.map((faq, idx) => (
+        <details class={`reveal-item reveal-delay-${(idx % 4) + 1} group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-ink-200/80 shadow-xs hover:border-lime-accent transition-all duration-200 open:shadow-card open:border-lime-accent`}>
+          <summary class="flex justify-between items-center cursor-pointer list-none gap-4">
+            <div class="flex items-center gap-3 sm:gap-4">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-lime-subtle text-brand-dark flex items-center justify-center font-mono font-bold text-xs shrink-0">
+                0{idx + 1}
+              </span>
+              <span class="font-display text-base sm:text-xl font-bold text-ink-900 group-hover:text-brand-forest transition-colors">
+                {faq.q}
+              </span>
+            </div>
+
+            <span class="w-8 h-8 rounded-full bg-canvas border border-ink-200 flex items-center justify-center text-ink-700 shrink-0 group-open:rotate-180 group-open:bg-lime-accent group-open:text-ink-900 transition-all duration-300">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+
+          <div class="mt-4 pt-4 border-t border-ink-100 text-xs sm:text-sm text-ink-700 leading-relaxed font-normal pl-10 sm:pl-12">
+            <p>{faq.a}</p>
+            <span class="inline-block mt-3 px-2.5 py-0.5 rounded-md text-[10px] font-mono uppercase tracking-wider bg-canvas text-ink-500 font-bold">
+              {faq.category}
+            </span>
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

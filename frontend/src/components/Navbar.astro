@@ -1,0 +1,89 @@
+---
+// Top-grade Organic Editorial Bento Navbar
+// Sits neatly at the top of the single-viewport frame without excessive height.
+---
+
+<header class="w-full pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 shrink-0">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-12 sm:h-14">
+    
+    <!-- Brand Signature -->
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-lime-accent flex items-center justify-center font-bold text-ink-900 text-xs sm:text-sm shadow-xs transition-transform group-hover:rotate-45 duration-300">
+        ✳
+      </div>
+      <div class="flex items-baseline gap-1.5">
+        <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-ink-900 leading-none">
+          YP Nexus
+        </span>
+        <span class="text-[10px] font-semibold uppercase tracking-wider text-ink-500 hidden sm:inline">
+          Foundation
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Pill Links -->
+    <nav class="hidden md:flex items-center gap-1 bg-white/90 backdrop-blur-md px-2 py-1 rounded-full border border-ink-200/80 shadow-xs text-xs sm:text-sm font-medium text-ink-700">
+      <a href="#initiatives" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Pillars</a>
+      <a href="#paryay-dschool" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Paryay Dschool</a>
+      <a href="#about" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Our Ethos</a>
+      <a href="#faq" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Field Inquiries</a>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a 
+        href="#support" 
+        class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-xs active:scale-95 transition-all"
+      >
+        <span>Support Us</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        type="button" 
+        class="md:hidden w-8 h-8 rounded-full bg-white border border-ink-200 flex items-center justify-center text-ink-900 hover:bg-canvas transition-colors"
+        aria-label="Toggle Navigation Menu"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-x-3 top-16 bg-white/98 backdrop-blur-xl rounded-2xl p-5 shadow-float border border-ink-200 z-50 space-y-3">
+    <a href="#initiatives" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Pillars &amp; Initiatives</a>
+    <a href="#paryay-dschool" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Paryay Dschool</a>
+    <a href="#about" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Our Ethos</a>
+    <a href="#faq" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Field Inquiries</a>
+    <div class="pt-3 border-t border-ink-100">
+      <a 
+        href="#support" 
+        class="mobile-nav-link block w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover transition-colors"
+      >
+        Support Mission &rarr;
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-nav-link');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>

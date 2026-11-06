@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'General Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #111813;
+    background-color: #f6f5f1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── HIGH-END EDITORIAL ORGANIC REVEAL ENGINE ── */
+/* Base unrevealed state: graceful 40px drop + subtle 0.97 scale depth */
+.reveal-item {
+  opacity: 0;
+  transform: translate3d(0, 42px, 0) scale(0.97);
+  transition: none; /* Instant reset off-screen so reverse-scroll always replays cleanly */
+  backface-visibility: hidden;
+}
+
+/* Revealed active state: Luxurious 0.85s organic deceleration */
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth zoom-settle for documentary photography inside cards */
+.reveal-item img.anim-parallax-img {
+  transform: scale(1.08);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-item.is-visible img.anim-parallax-img {
+  transform: scale(1);
+}
+
+/* Distinct, rhythmic stagger delays (clearly visible sequence) */
+.reveal-delay-1 { transition-delay: 0.10s; }
+.reveal-delay-2 { transition-delay: 0.22s; }
+.reveal-delay-3 { transition-delay: 0.34s; }
+.reveal-delay-4 { transition-delay: 0.46s; }
+
+/* Mobile-tuned staggers (snappy yet clearly noticeable) */
+@media (max-width: 640px) {
+  .reveal-item {
+    transform: translate3d(0, 32px, 0) scale(0.98);
+  }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+}
+
+/* ── CINEMATIC HERO ENTRANCE (Pure CSS, 60fps compositor thread) ── */
+@keyframes heroEditorialIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.hero-animate-in {
+  opacity: 0;
+  animation: heroEditorialIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-delay-1 { animation-delay: 0.10s; }
+.hero-delay-2 { animation-delay: 0.22s; }
+.hero-delay-3 { animation-delay: 0.36s; }

@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "YP Nexus Foundation | Alternatives towards Ecologically Sensitive Life",
+  description = "YP Nexus Foundation is an ecological and learning sanctuary in Pune, India offering experiential open schooling, environmental documentation, and community habitats."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/png" href="/images/2023/02/PD-Logo-300x165.png" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Modern Humanist Typography: General Sans + Cabinet Grotesk + Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen flex flex-col bg-canvas text-ink-900 selection:bg-lime-accent selection:text-ink-900 antialiased overflow-x-hidden">
+    <slot />
+
+    <!-- Ultra-Lightweight (0.2KB) Native IntersectionObserver Engine -->
+    <!-- 60FPS Hardware Accelerated, Visible Organic Timing, Supports bi-directional reverse scroll -->
+    <script>
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              } else {
+                // Only reset when completely off-screen so reverse scrolling cleanly re-animates without premature flicker
+                const rect = entry.boundingClientRect;
+                if (rect.bottom < -20 || rect.top > window.innerHeight + 20) {
+                  entry.target.classList.remove('is-visible');
+                }
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' // Visibly triggers 50px inside viewport so user actually sees the smooth reveal
+          }
+        );
+
+        document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+      } else {
+        // Fallback or reduced motion: make everything visible immediately
+        document.querySelectorAll('.reveal-item').forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

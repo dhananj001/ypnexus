@@ -1,0 +1,28 @@
+---
+// Home Page - YP Nexus Foundation
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import InitiativesGrid from '../components/InitiativesGrid.astro';
+import ParyayDschoolSection from '../components/ParyayDschoolSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="YP Nexus Foundation | Alternatives towards Ecologically Sensitive Life"
+  description="YP Nexus Foundation is an ecological and learning initiative in Pune, India offering experiential open schooling, environmental documentation, and community habitats."
+>
+  <main class="flex-grow">
+    <!-- Zero-Scroll Viewport: Navbar + Hero combined into 100dvh -->
+    <Hero>
+      <Navbar slot="navbar" />
+    </Hero>
+    
+    <InitiativesGrid />
+    <ParyayDschoolSection />
+    <FAQSection />
+  </main>
+
+  <Footer />
+</Layout>

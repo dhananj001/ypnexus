@@ -1,0 +1,212 @@
+---
+// Luxury Organic Editorial Bento Hero with GSAP Animation hooks
+---
+
+<div class="h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-canvas">
+  
+  <!-- ── 1. COMPACT NAVBAR (Shared) ── -->
+  <slot name="navbar" />
+
+  <!-- ── 2. DESKTOP VIEWPORT (sm & up: 100dvh Single Rounded Bento Card) ── -->
+  <div class="hidden sm:flex flex-1 w-full px-6 lg:px-8 py-3 flex-col min-h-0">
+    <div class="max-w-7xl mx-auto w-full h-full flex flex-col min-h-0">
+      
+      <div class="hero-animate-in relative w-full h-full rounded-3xl lg:rounded-4xl overflow-hidden flex flex-col justify-between p-8 lg:p-12 shadow-float border border-ink-200/60 bg-brand-dark">
+        <!-- Desktop Photography -->
+        <img 
+          src="/images/ypnexus-hero-desktop.jpg" 
+          alt="YP Nexus Mentor and Learners in outdoor agro-ecology study" 
+          class="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+          loading="eager"
+        />
+
+        <!-- Desktop Scrim -->
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/75 to-transparent w-[62%]"></div>
+
+        <!-- Top Pill -->
+        <div class="hero-animate-in hero-delay-1 relative z-10 flex items-center justify-between">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[11px] font-medium tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+            <span class="uppercase tracking-wider font-semibold text-[10px]">Ecological Open School</span>
+            <span class="text-white/40">•</span>
+            <span class="text-white/85">Pune, India</span>
+          </div>
+          <div class="text-[11px] font-mono text-white/50 tracking-wider">
+            EST. 2018 • PUNE, IN
+          </div>
+        </div>
+
+        <!-- Desktop Content -->
+        <div class="relative z-10 max-w-xl my-auto py-4 space-y-5">
+          <h1 class="hero-animate-in hero-delay-2 font-display text-4xl md:text-5xl lg:text-[3.5rem] text-white font-extrabold leading-[1.08] tracking-tight [text-wrap:balance]">
+            Alternatives for an <span class="text-lime-accent underline decoration-lime-accent/40 decoration-4 underline-offset-4">ecologically sensitive</span> life &amp; learning.
+          </h1>
+
+          <p class="hero-animate-in hero-delay-2 text-base text-white/85 font-normal leading-relaxed max-w-md">
+            No artificial walls of standards, age-groups, or rote exams. An open sanctuary where children develop independent capabilities for living realities.
+          </p>
+
+          <div class="hero-animate-in hero-delay-3 pt-1 flex items-center gap-2.5">
+            <a 
+              href="#paryay-dschool" 
+              class="inline-flex items-center justify-center h-12 px-6 rounded-full text-sm font-bold tracking-wide text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-sm active:scale-95 transition-all"
+            >
+              Explore Paryay Dschool
+            </a>
+            <a 
+              href="#paryay-dschool" 
+              class="w-12 h-12 rounded-full bg-lime-accent hover:bg-lime-hover flex items-center justify-center text-ink-900 active:scale-95 transition-all shadow-sm group"
+              aria-label="Go to Paryay Dschool"
+            >
+              <svg class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Desktop Bottom Proof & Tabs -->
+        <div class="hero-animate-in hero-delay-3 relative z-20 flex items-end justify-between gap-3 pt-4 border-t border-white/10">
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-white/40 mr-1">Pillars:</span>
+            <a href="#paryay-dschool" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] font-semibold text-white tracking-wide backdrop-blur-xs transition-colors">
+              01 / Paryay Dschool
+            </a>
+            <a href="#initiatives" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] font-semibold text-white tracking-wide backdrop-blur-xs transition-colors">
+              02 / PiSELT Leadership
+            </a>
+            <a href="#initiatives" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-[11px] font-semibold text-white tracking-wide backdrop-blur-xs transition-colors">
+              03 / TurTle Media
+            </a>
+          </div>
+
+          <div class="anim-hero-widget bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-float border border-white/80 w-72">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-ink-500 font-sans">Learner Ratio</span>
+              <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-lime-subtle text-ink-900 border border-lime-accent/50">
+                NIOS Approved
+              </span>
+            </div>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span class="text-2xl font-display font-black text-ink-900 leading-none">1 : 6</span>
+              <span class="text-xs text-ink-600 font-medium">1 mentor per 6 learners</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-ink-100 overflow-hidden flex gap-0.5 mt-2">
+              <div class="h-full bg-lime-accent w-[85%] rounded-full"></div>
+              <div class="h-full bg-brand-forest w-[15%] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 3. PERFECT ZERO-GAP MOBILE BENTO ── -->
+  <div class="flex sm:hidden flex-1 w-full px-3.5 pb-2.5 flex-col justify-between min-h-0 gap-2">
+    
+    <!-- Cell 1: Visual Photography Bento Card -->
+    <div class="hero-animate-in relative w-full flex-1 min-h-[220px] rounded-2xl overflow-hidden shadow-card border border-ink-200/80">
+      <img 
+        src="/images/ypnexus-hero-mobile.jpg" 
+        alt="Mentor sharing potted seedling with learners in Pune" 
+        class="w-full h-full object-cover object-[center_30%]"
+        loading="eager"
+      />
+      
+      <div class="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-dark/85 backdrop-blur-md text-white text-[9px] font-semibold tracking-wide border border-white/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-lime-accent"></span>
+        <span>Open Sanctuary • Pune</span>
+      </div>
+
+      <div class="absolute bottom-2.5 right-2.5 z-10 bg-white/95 backdrop-blur-md rounded-xl px-2.5 py-1 shadow-md border border-white/90 flex items-center gap-2">
+        <span class="font-display font-black text-sm text-ink-900 leading-none">1 : 6</span>
+        <span class="text-[8px] font-bold uppercase tracking-wider text-ink-600">Mentor Ratio</span>
+      </div>
+    </div>
+
+    <!-- Cell 2: Content Bento Card -->
+    <div class="hero-animate-in hero-delay-1 bg-white rounded-2xl p-3.5 border border-ink-200/80 shadow-xs shrink-0 flex flex-col gap-2">
+      <div class="flex items-center justify-between">
+        <span class="text-[9px] font-mono uppercase tracking-widest text-ink-400 font-bold">01 / Foundation Ethos</span>
+        <span class="text-[9px] font-semibold text-brand-forest uppercase tracking-wider font-mono">Pune Hub</span>
+      </div>
+      
+      <h1 class="font-display text-[1.4rem] leading-[1.14] font-extrabold text-ink-900 tracking-tight [text-wrap:balance]">
+        Alternatives for an <span class="text-brand-forest underline decoration-lime-accent decoration-3 underline-offset-2">ecologically sensitive</span> life &amp; learning.
+      </h1>
+
+      <p class="text-[11px] text-ink-600 leading-snug">
+        No artificial walls of standards, age-groups, or internal competition. Individual capabilities developed for real-world life and ecology.
+      </p>
+
+      <div class="flex flex-wrap gap-1.5 pt-0.5">
+        <span class="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-canvas text-ink-700 border border-ink-200/80">
+          ✓ Multilingual Center
+        </span>
+        <span class="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-canvas text-ink-700 border border-ink-200/80">
+          ✓ Study Tours
+        </span>
+        <span class="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-canvas text-ink-700 border border-ink-200/80">
+          ✓ Zero Rote Exams
+        </span>
+      </div>
+    </div>
+
+    <!-- Cell 3: Two-Column Bento Data Tiles -->
+    <div class="hero-animate-in hero-delay-2 grid grid-cols-2 gap-2 shrink-0">
+      
+      <div class="bg-lime-subtle rounded-xl p-2.5 border border-lime-accent/50 shadow-2xs flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-[8px] font-mono uppercase tracking-wider text-brand-forest font-bold">Standard</span>
+          <span class="text-[10px]">🌿</span>
+        </div>
+        <div class="my-0.5">
+          <div class="font-display font-black text-xl text-brand-dark leading-none">100%</div>
+          <div class="text-[9px] font-bold text-brand-forest mt-0.5 leading-tight">Experiential Learning</div>
+        </div>
+        <div class="text-[8px] text-ink-600 leading-tight">NIOS &amp; MsBOS Board</div>
+      </div>
+
+      <div class="bg-white rounded-xl p-2.5 border border-ink-200/80 shadow-2xs flex flex-col justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-earth-200 overflow-hidden flex-shrink-0 border border-ink-200">
+            <img src="/images/2023/01/EV-Delhi-Photos-Leaners-Website_V5-603x1024.jpg" alt="Learner" class="w-full h-full object-cover object-top" />
+          </div>
+          <div class="flex flex-col overflow-hidden">
+            <span class="text-[9px] font-bold text-ink-900 truncate leading-tight">Paryay Mentor</span>
+            <span class="text-[8px] text-ink-500 truncate leading-tight">Documented Process</span>
+          </div>
+        </div>
+        <p class="text-[8.5px] italic text-ink-700 leading-snug mt-1">
+          “Children develop self-reliance through direct nature tours &amp; mentoring.”
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Cell 4: Action Pair Bar -->
+    <div class="hero-animate-in hero-delay-3 flex items-center gap-2 w-full shrink-0 h-11">
+      <a 
+        href="#paryay-dschool" 
+        class="flex-1 h-full inline-flex items-center justify-center px-4 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover active:scale-[0.98] shadow-xs transition-all"
+      >
+        Explore Paryay Dschool
+      </a>
+
+      <a 
+        href="#paryay-dschool" 
+        class="w-11 h-11 rounded-full bg-lime-accent hover:bg-lime-hover flex items-center justify-center text-ink-900 active:scale-[0.98] transition-all shadow-xs shrink-0"
+        aria-label="Open Paryay Dschool"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+</div>
