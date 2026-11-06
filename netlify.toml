@@ -1,0 +1,9 @@
+# Netlify configuration for monorepo / subfolder setup
+[build]
+  base = "frontend"
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
