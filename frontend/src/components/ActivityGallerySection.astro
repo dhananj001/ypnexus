@@ -1,0 +1,516 @@
+---
+// Section: Activity Gallery (Authentic Field & Activity Photographs)
+// Responsive Desktop Grid + Mobile Native App Photos Grid + Fullscreen Mobile Lightbox Viewer
+
+const galleryItems = [
+  {
+    id: "g1",
+    category: "field",
+    title: "Hillside Field Study Expedition",
+    location: "Western Ghats, Pune",
+    caption: "Learners carrying field journals and sketchbooks, taking observational notes during an outdoor biodiversity tour.",
+    image: "/images/content_assets/08_activity_photographs_section_g/image64.jpeg",
+    tag: "EVs & Field Study"
+  },
+  {
+    id: "g2",
+    category: "trades",
+    title: "Bicycle Maintenance & Yantralaya",
+    location: "Dhayari Campus",
+    caption: "Hands-on engineering: learners independently dismantling, greasing, and repairing bicycles with wrenches and tools.",
+    image: "/images/content_assets/07_activity_photographs_section_f/image50.jpeg",
+    tag: "Life Trades (LPTP)"
+  },
+  {
+    id: "g3",
+    category: "creative",
+    title: "Collaborative Floor Canvas",
+    location: "Art Studio",
+    caption: "Multi-age learners gathered around a giant floor scroll, exploring self-expression and orbital language through crayons and pastels.",
+    image: "/images/content_assets/06_activity_photographs_section_a11/image10.jpeg",
+    tag: "Creative Expression"
+  },
+  {
+    id: "g4",
+    category: "community",
+    title: "Open-Air Mentoring Circle",
+    location: "Under Banyan Canopy",
+    caption: "Adolescent dialogue session exploring societal orbits, current affairs, and personal growth under the trees.",
+    image: "/images/content_assets/07_activity_photographs_section_f/image47.jpeg",
+    tag: "Community Habitats"
+  },
+  {
+    id: "g5",
+    category: "trades",
+    title: "Field Visit: Stone Masonry & Crafts",
+    location: "Rural Artisan Workshop",
+    caption: "Experiencing traditional artisan trades: learners studying rock carving techniques directly with practicing rural stone masons.",
+    image: "/images/content_assets/07_activity_photographs_section_f/image49.jpeg",
+    tag: "Artisan Trades"
+  },
+  {
+    id: "g6",
+    category: "creative",
+    title: "Multi-Book Reading Sanctuary",
+    location: "Children's Library",
+    caption: "Children freely browsing Marathi, Hindi, and English literature on the floor, choosing books that spark personal curiosity.",
+    image: "/images/content_assets/08_activity_photographs_section_g/image54.jpeg",
+    tag: "BAMS Library"
+  },
+  {
+    id: "g7",
+    category: "trades",
+    title: "Traditional Spice Grinding & Food Prep",
+    location: "Community Kitchen",
+    caption: "Young learners mastering stone mortar and pestle (पाटा-वरवंटा), preparing fresh spices and farm ingredients for lunch.",
+    image: "/images/content_assets/06_activity_photographs_section_a11/image11.jpeg",
+    tag: "Practical Living"
+  },
+  {
+    id: "g8",
+    category: "community",
+    title: "Cooperative Kitchen Cooking",
+    location: "Laterite Stone Habitat",
+    caption: "Youth learners kneading dough, rolling rotis, and cooking together in a rural laterite stone kitchen during a residential tour.",
+    image: "/images/content_assets/07_activity_photographs_section_f/image48.jpeg",
+    tag: "Self-Reliance"
+  },
+  {
+    id: "g9",
+    category: "field",
+    title: "Open Grassland Exploration",
+    location: "Sinhagad Foothills",
+    caption: "Unstructured play and habitat observation in lush open grasslands: movement, vitality, and connection to native soil.",
+    image: "/images/content_assets/08_activity_photographs_section_g/image53.jpeg",
+    tag: "Native Soil"
+  },
+  {
+    id: "g10",
+    category: "creative",
+    title: "Design Mentorship & Blueprint Review",
+    location: "Yantralaya Lab",
+    caption: "Mentor and senior learners reviewing architectural drawings and design plans with shared laughter and critical thinking.",
+    image: "/images/content_assets/08_activity_photographs_section_g/image65.jpeg",
+    tag: "Design Thinking"
+  },
+  {
+    id: "g11",
+    category: "trades",
+    title: "Podding & Harvest Sorting",
+    location: "Garden Porch",
+    caption: "Children sorting fresh garden beans and green peas, discovering plant biology through tactile food preparation.",
+    image: "/images/content_assets/06_activity_photographs_section_a11/image13.jpeg",
+    tag: "Agro-Ecology"
+  },
+  {
+    id: "g12",
+    category: "community",
+    title: "Intergenerational Community Meal",
+    location: "Outdoor Veranda",
+    caption: "Learners, mentors, and parents breaking bread together outdoors, reinforcing warmth, zero-waste values, and family culture.",
+    image: "/images/content_assets/06_activity_photographs_section_a11/image15.jpeg",
+    tag: "Community Life"
+  }
+];
+---
+
+<section id="gallery" class="w-full py-12 sm:py-20 px-3 sm:px-6 lg:px-8 bg-canvas border-b border-ink-200">
+  <div class="max-w-7xl mx-auto space-y-6 sm:space-y-12">
+    
+    <!-- Section Header -->
+    <div class="reveal-item flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 sm:pb-6 border-b border-ink-200">
+      <div class="max-w-3xl space-y-2 sm:space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-subtle border border-lime-accent/50 text-[11px] font-mono uppercase tracking-wider text-brand-dark font-bold">
+          <span>04 / Life in Action</span>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-ink-900 tracking-tight leading-[1.12]">
+          Authentic moments from our field journeys &amp; sanctuaries.
+        </h2>
+        <p class="text-xs sm:text-base text-ink-700 leading-relaxed">
+          No staged stock photos. Real learners cooking together, fixing bicycles, exploring mountain hills, and drawing on floor scrolls.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills (Horizontally scrollable on mobile like native apps) -->
+      <div class="w-full md:w-auto overflow-x-auto no-scrollbar py-1">
+        <div class="flex items-center gap-1.5 sm:gap-2 text-xs font-semibold shrink-0" id="gallery-filter-buttons">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="gallery-filter-btn active px-3 sm:px-3.5 py-1.5 rounded-full bg-brand-dark text-white border border-brand-dark transition-all cursor-pointer text-xs"
+          >
+            All Moments
+          </button>
+          <button 
+            type="button" 
+            data-filter="field" 
+            class="gallery-filter-btn px-3 sm:px-3.5 py-1.5 rounded-full bg-white text-ink-700 hover:text-ink-900 border border-ink-200 transition-all cursor-pointer text-xs shrink-0"
+          >
+            Field Expeditions
+          </button>
+          <button 
+            type="button" 
+            data-filter="trades" 
+            class="gallery-filter-btn px-3 sm:px-3.5 py-1.5 rounded-full bg-white text-ink-700 hover:text-ink-900 border border-ink-200 transition-all cursor-pointer text-xs shrink-0"
+          >
+            Life Trades
+          </button>
+          <button 
+            type="button" 
+            data-filter="creative" 
+            class="gallery-filter-btn px-3 sm:px-3.5 py-1.5 rounded-full bg-white text-ink-700 hover:text-ink-900 border border-ink-200 transition-all cursor-pointer text-xs shrink-0"
+          >
+            Floor Learning
+          </button>
+          <button 
+            type="button" 
+            data-filter="community" 
+            class="gallery-filter-btn px-3 sm:px-3.5 py-1.5 rounded-full bg-white text-ink-700 hover:text-ink-900 border border-ink-200 transition-all cursor-pointer text-xs shrink-0"
+          >
+            Community
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 1. MOBILE NATIVE-STYLE PHOTO ALBUM GRID (sm:hidden) ── -->
+    <!-- Dense 2-column square thumbnails with photo counter badge, exactly like iOS/Google Photos -->
+    <div class="grid grid-cols-2 gap-2 sm:hidden" id="mobile-gallery-grid">
+      {galleryItems.map((item, idx) => (
+        <button 
+          type="button"
+          data-category={item.category}
+          data-index={idx}
+          class="gallery-card mobile-photo-card text-left relative aspect-square rounded-2xl overflow-hidden bg-earth-200 border border-ink-200/80 shadow-2xs group focus:outline-none active:scale-[0.98] transition-transform"
+          aria-label={`Open photo ${item.title}`}
+        >
+          <img 
+            src={item.image} 
+            alt={item.title} 
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-between p-2.5">
+            <span class="self-start px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-white/90 text-brand-dark backdrop-blur-xs">
+              {item.tag}
+            </span>
+            <div class="space-y-0.5">
+              <p class="text-white text-xs font-bold leading-tight line-clamp-1 drop-shadow-sm">
+                {item.title}
+              </p>
+              <p class="text-white/80 text-[10px] font-mono flex items-center gap-1">
+                <span>📍 {item.location}</span>
+              </p>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+
+    <!-- ── 2. DESKTOP EDITORIAL BENTO GRID (Hidden on mobile, block on sm and up) ── -->
+    <div class="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7" id="desktop-gallery-grid">
+      {galleryItems.map((item, idx) => (
+        <div 
+          data-category={item.category}
+          data-index={idx}
+          class="gallery-card desktop-photo-card reveal-item bg-white rounded-3xl overflow-hidden border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300 cursor-pointer"
+        >
+          <!-- Image Frame -->
+          <div class="w-full aspect-[4/3] overflow-hidden bg-earth-100 relative">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+              <span class="text-white text-xs font-mono font-medium">📍 {item.location}</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white text-ink-900 shadow-sm">
+                <span>Tap to Expand</span> &nearr;
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-white/90 text-brand-forest backdrop-blur-xs border border-white/80 shadow-xs">
+              {item.tag}
+            </span>
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-5 sm:p-6 space-y-2 flex-1 flex flex-col justify-between">
+            <div class="space-y-1.5">
+              <h3 class="font-display text-lg sm:text-xl font-bold text-ink-900 tracking-tight leading-snug group-hover:text-brand-forest transition-colors">
+                {item.title}
+              </h3>
+              <p class="text-xs text-ink-600 leading-relaxed font-normal">
+                {item.caption}
+              </p>
+            </div>
+            
+            <div class="pt-3 border-t border-ink-100 flex items-center justify-between text-[11px] font-mono text-ink-400">
+              <span>{item.location}</span>
+              <span class="text-brand-forest font-bold">YP Nexus</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 3. NATIVE FULLSCREEN GALLERY VIEWER (LIGHTBOX) ── -->
+<div 
+  id="gallery-viewer-modal" 
+  class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex-col justify-between transition-opacity duration-300 select-none opacity-0"
+  role="dialog" 
+  aria-modal="true"
+  aria-label="Photo Gallery Viewer"
+>
+  <!-- Viewer Header (Native App Bar) -->
+  <header class="w-full px-4 py-3 sm:py-4 flex items-center justify-between z-20 bg-gradient-to-b from-black/80 to-transparent">
+    <div class="flex items-center gap-3">
+      <!-- Index Counter Pill -->
+      <span 
+        id="viewer-counter" 
+        class="px-3 py-1 rounded-full bg-white/15 text-white text-xs font-mono font-bold tracking-wider border border-white/20 backdrop-blur-md"
+      >
+        1 / 12
+      </span>
+      <!-- Tag Pill -->
+      <span 
+        id="viewer-tag" 
+        class="hidden sm:inline-block px-3 py-1 rounded-full bg-lime-accent text-ink-900 text-xs font-bold uppercase tracking-wider"
+      >
+        Category
+      </span>
+    </div>
+
+    <!-- Viewer Controls -->
+    <div class="flex items-center gap-2">
+      <button 
+        id="viewer-close-btn" 
+        type="button" 
+        class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center active:scale-90 transition-all border border-white/20"
+        aria-label="Close Gallery Viewer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Viewer Central Image Display with Navigation Arrows -->
+  <div class="relative flex-1 w-full flex items-center justify-center p-2 sm:p-6 overflow-hidden" id="viewer-touch-area">
+    
+    <!-- Previous Button -->
+    <button 
+      id="viewer-prev-btn" 
+      type="button" 
+      class="absolute left-3 sm:left-6 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:scale-90 text-white flex items-center justify-center border border-white/20 backdrop-blur-md transition-all shadow-float"
+      aria-label="Previous photo"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Main Active Photo -->
+    <div class="w-full h-full flex items-center justify-center relative">
+      <img 
+        id="viewer-image" 
+        src="" 
+        alt="" 
+        class="max-h-[72vh] sm:max-h-[78vh] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl transition-all duration-300 transform scale-100"
+      />
+    </div>
+
+    <!-- Next Button -->
+    <button 
+      id="viewer-next-btn" 
+      type="button" 
+      class="absolute right-3 sm:right-6 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/25 active:scale-90 text-white flex items-center justify-center border border-white/20 backdrop-blur-md transition-all shadow-float"
+      aria-label="Next photo"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Viewer Bottom Details Drawer (Native App Sheet) -->
+  <footer class="w-full p-4 sm:p-6 bg-gradient-to-t from-black via-black/90 to-transparent z-20">
+    <div class="max-w-3xl mx-auto space-y-1.5 text-center sm:text-left">
+      <div class="flex items-center justify-center sm:justify-between gap-2 flex-wrap">
+        <h3 id="viewer-title" class="text-white text-lg sm:text-2xl font-display font-bold tracking-tight">
+          Photo Title
+        </h3>
+        <span id="viewer-location" class="text-lime-accent text-xs font-mono font-medium flex items-center gap-1">
+          📍 Pune Center
+        </span>
+      </div>
+      <p id="viewer-caption" class="text-white/80 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto sm:mx-0 font-normal">
+        Photo caption description goes here.
+      </p>
+      <p class="text-white/40 text-[10px] font-mono pt-1">
+        Swipe left/right or use arrow keys • Tap outside to close
+      </p>
+    </div>
+  </footer>
+</div>
+
+<script define:vars={{ items: galleryItems }}>
+  // Filter Functionality
+  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const allCards = document.querySelectorAll('.gallery-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      // Update button active states
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark');
+        b.classList.add('bg-white', 'text-ink-700', 'border-ink-200');
+      });
+      btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+      btn.classList.remove('bg-white', 'text-ink-700', 'border-ink-200');
+
+      // Show/Hide cards
+      allCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          (card as HTMLElement).style.display = '';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ── Native Fullscreen Modal Logic ──
+  const modal = document.getElementById('gallery-viewer-modal');
+  const viewerImg = document.getElementById('viewer-image');
+  const viewerTitle = document.getElementById('viewer-title');
+  const viewerCaption = document.getElementById('viewer-caption');
+  const viewerLocation = document.getElementById('viewer-location');
+  const viewerCounter = document.getElementById('viewer-counter');
+  const viewerTag = document.getElementById('viewer-tag');
+  const closeBtn = document.getElementById('viewer-close-btn');
+  const prevBtn = document.getElementById('viewer-prev-btn');
+  const nextBtn = document.getElementById('viewer-next-btn');
+  const touchArea = document.getElementById('viewer-touch-area');
+
+  let currentIndex = 0;
+
+  function updateViewer(index) {
+    if (!items || items.length === 0) return;
+    if (index < 0) index = items.length - 1;
+    if (index >= items.length) index = 0;
+    currentIndex = index;
+
+    const cur = items[currentIndex];
+    if (!cur) return;
+
+    // Fade animation on image change
+    if (viewerImg) {
+      viewerImg.style.opacity = '0.4';
+      viewerImg.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        viewerImg.setAttribute('src', cur.image);
+        viewerImg.setAttribute('alt', cur.title);
+        viewerImg.style.opacity = '1';
+        viewerImg.style.transform = 'scale(1)';
+      }, 100);
+    }
+
+    if (viewerTitle) viewerTitle.textContent = cur.title;
+    if (viewerCaption) viewerCaption.textContent = cur.caption;
+    if (viewerLocation) viewerLocation.textContent = `📍 ${cur.location}`;
+    if (viewerCounter) viewerCounter.textContent = `${currentIndex + 1} / ${items.length}`;
+    if (viewerTag) viewerTag.textContent = cur.tag;
+  }
+
+  function openViewer(index) {
+    updateViewer(index);
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      // Smooth fade-in
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+      });
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeViewer() {
+    if (modal) {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 250);
+    }
+    document.body.style.overflow = '';
+  }
+
+  // Bind clicks to all card elements (both mobile buttons & desktop cards)
+  allCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.getAttribute('data-index') || '0', 10);
+      openViewer(idx);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeViewer);
+  if (prevBtn) prevBtn.addEventListener('click', () => updateViewer(currentIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => updateViewer(currentIndex + 1));
+
+  // Dismiss on clicking backdrop outside of navigation buttons
+  if (touchArea) {
+    touchArea.addEventListener('click', (e) => {
+      if (e.target === touchArea || (e.target as HTMLElement).tagName === 'DIV') {
+        closeViewer();
+      }
+    });
+  }
+
+  // Keyboard navigation (Arrow keys + Escape)
+  window.addEventListener('keydown', (e) => {
+    if (!modal || modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeViewer();
+    if (e.key === 'ArrowLeft') updateViewer(currentIndex - 1);
+    if (e.key === 'ArrowRight') updateViewer(currentIndex + 1);
+  });
+
+  // ── Native Mobile Touch Swipes ──
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (touchArea) {
+    touchArea.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    touchArea.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const diff = touchEndX - touchStartX;
+    // Minimum 45px swipe threshold
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        // Swiped right -> Previous photo
+        updateViewer(currentIndex - 1);
+      } else {
+        // Swiped left -> Next photo
+        updateViewer(currentIndex + 1);
+      }
+    }
+  }
+</script>
