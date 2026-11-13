@@ -1,0 +1,78 @@
+---
+// Page: /gallery - Life in Action (Authentic Field & Activity Photo Gallery)
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ActivityGallerySection from '../components/ActivityGallerySection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Life in Action (Gallery) | YP Nexus Foundation"
+  description="View authentic documentary photography of learners, mentors, and community members engaged in outdoor field expeditions, practical life trades, collaborative floor art, and community cooking in Pune."
+>
+  <Navbar isStandalone={true} />
+
+  <main class="flex-grow">
+    
+    <!-- ── 1. EDITORIAL HERO ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white border-b border-white/10 relative overflow-hidden">
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-lime-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-mono uppercase tracking-wider text-lime-accent font-bold">
+          <span>04 / Visual Documentary Archives</span>
+        </div>
+        
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] [text-wrap:balance]">
+          Life in Action: <span class="text-lime-accent underline decoration-lime-accent/40 decoration-4 underline-offset-4">Unstaged moments</span> from field &amp; sanctuary.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+          At conventional schools, photographs are posed in stiff uniforms during annual sports days. At Paryay Dschool, our documentary archives capture living reality: hands covered in soil, children rolling rotis on wooden boards, fixing bicycle chains, and debating under banyan trees.
+        </p>
+
+        <!-- Documentary Stats -->
+        <div class="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono">
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            📸 65+ Authentic Captures
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-lime-accent text-ink-900 font-bold">
+            100% Unstaged Real Learning
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            Dhayari &amp; Sahyadri Expeditions
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            📱 Mobile Native Lightbox Enabled
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. GALLERY COMPONENT (Bento Desktop + Native Mobile Album + Lightbox) ── -->
+    <ActivityGallerySection />
+
+    <!-- ── 3. VISITOR REFLECTION BANNER ── -->
+    <section class="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-ink-200">
+      <div class="max-w-4xl mx-auto rounded-3xl p-8 sm:p-10 bg-canvas border border-ink-200/90 shadow-2xs text-center space-y-4">
+        <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">
+          Experience It In Person
+        </span>
+        <h3 class="font-display text-2xl font-black text-ink-900">
+          Want your child to experience this living freedom?
+        </h3>
+        <p class="text-xs sm:text-sm text-ink-600 max-w-lg mx-auto">
+          We invite families to visit our Dhayari sanctuary for an informal conversation and campus discovery day.
+        </p>
+        <div class="pt-2">
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark hover:bg-brand-forest text-white text-xs font-bold uppercase tracking-wider transition-colors">
+            Schedule a Visit with Your Child &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

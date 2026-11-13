@@ -1,0 +1,502 @@
+---
+// Page: /contact - Admissions Dialogue & Campus Visit (Psychologically Reassuring & Interactive)
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const mentors = [
+  {
+    role: "Admissions & WAI Diagnostic",
+    name: "Admissions Desk",
+    phone: "+91 94237 89914",
+    cleanPhone: "919423789914",
+    waMsg: "Hello YP Nexus, I would like to inquire about admissions dialogue and WAI diagnostic.",
+    icon: "📋",
+    desc: "For new parent dialogues, 1:6 ratio inquiries, and 75-day diagnostic status audits."
+  },
+  {
+    role: "Paryay Dschool & yPOLEN",
+    name: "Academic Facilitation",
+    phone: "+91 74481 76874",
+    cleanPhone: "917448176874",
+    waMsg: "Hello YP Nexus, I want to learn more about Paryay Dschool and yPOLEN higher ed support.",
+    icon: "🌱",
+    desc: "Balmitee, PND Novice, PJD Juvenile, and Open University degree guidance."
+  },
+  {
+    role: "Programs & Vartul Parenting",
+    name: "Community & Parenting",
+    phone: "+91 99211 11087",
+    cleanPhone: "919921111087",
+    waMsg: "Hello YP Nexus, I would like details about the Vartul parent co-learning course.",
+    icon: "👥",
+    desc: "18-session weekend parent courses, TurTle Media archives, and NeRo modular workshops."
+  },
+  {
+    role: "Parent Co-Learning Circle",
+    name: "Vartul Support Desk",
+    phone: "+91 96573 11794",
+    cleanPhone: "919657311794",
+    waMsg: "Hello, I want to join the YP Nexus parents co-learning WhatsApp community.",
+    icon: "💬",
+    desc: "Ongoing parent community dialogue, screen-free tips, and reading library updates."
+  }
+];
+
+const roadmapSteps = [
+  {
+    num: "01",
+    title: "Informal Chai & Chat",
+    badge: "Parent Dialogue",
+    time: "45–60 mins",
+    desc: "A relaxed, candid conversation with our mentors over tea. We listen to your family values, your child's innate rhythms, and previous schooling experiences—strictly no sales pressure or judgment."
+  },
+  {
+    num: "02",
+    title: "Child Campus Discovery Day",
+    badge: "Sensory Immersion",
+    time: "Half Day (Trial)",
+    desc: "Your child visits our Dhayari campus without the terror of an entrance exam. They freely try woodwork in Yantralaya, join peer cooking in the kitchen, and explore nature hills to see if the environment sparks their joy."
+  },
+  {
+    num: "03",
+    title: "Collaborative Co-Learning Agreement",
+    badge: "Mutual Alignment",
+    time: "Co-Designed",
+    desc: "Mentors, parents, and the learner reflect together on observations. If both family and mentors feel a natural resonance, we co-create an individualized learning schedule and welcoming transition."
+  }
+];
+---
+
+<Layout 
+  title="Admissions Dialogue & Campus Visit | YP Nexus Foundation"
+  description="Connect with YP Nexus Foundation in Dhayari, Pune. Schedule an informal family dialogue, child campus discovery day, or explore open schooling admissions."
+>
+  <Navbar isStandalone={true} />
+
+  <main class="flex-grow">
+    
+    <!-- ── 1. EDITORIAL HERO ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white border-b border-white/10 relative overflow-hidden">
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-lime-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-mono uppercase tracking-wider text-lime-accent font-bold">
+          <span>Admissions &amp; Open Dialogue • Pune Campus</span>
+        </div>
+        
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] [text-wrap:balance]">
+          A welcoming dialogue, <span class="text-lime-accent underline decoration-lime-accent/40 decoration-4 underline-offset-4">not a stressful interview</span>.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+          We believe young children should never be judged, tested, or rejected through entrance examinations. Our admissions journey is a respectful, mutual dialogue to explore if our open sanctuary is the right habitat for your child's unique spirit.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono">
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            📍 Nilu Bhau Limaye Sankul, Dhayari, Pune
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-lime-accent text-ink-900 font-bold">
+            Zero Entrance Tests • 1:6 Ratio
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            Registered Charitable Trust
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. THE 3-STEP MUTUAL ALIGNMENT ROADMAP (Cognitive Clarity) ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-canvas border-b border-ink-200">
+      <div class="max-w-7xl mx-auto space-y-10">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <span class="text-[11px] font-mono uppercase tracking-widest text-brand-forest font-bold">
+            The Admissions Philosophy
+          </span>
+          <h2 class="font-display text-3xl sm:text-4xl font-black text-ink-900 tracking-tight">
+            How Families Join Our Sanctuary
+          </h2>
+          <p class="text-xs sm:text-sm text-ink-600">
+            No stressful question papers, no ranks, and no anxious waiting lists. Here is our 3-step transparent pathway:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {roadmapSteps.map((step) => (
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-ink-200/90 shadow-2xs hover:border-lime-accent transition-all duration-300 space-y-4 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="w-10 h-10 rounded-2xl bg-lime-subtle text-brand-dark font-mono font-black text-sm flex items-center justify-center">
+                    {step.num}
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-canvas text-ink-600 border border-ink-200">
+                    {step.badge}
+                  </span>
+                </div>
+
+                <div class="space-y-1">
+                  <h3 class="font-display text-xl font-bold text-ink-900">
+                    {step.title}
+                  </h3>
+                  <span class="text-[11px] font-mono text-brand-forest font-semibold block">
+                    Duration: {step.time}
+                  </span>
+                </div>
+
+                <p class="text-xs sm:text-sm text-ink-700 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+
+              <div class="pt-3 border-t border-ink-100 flex items-center gap-1.5 text-[11px] font-mono text-ink-500">
+                <span class="text-emerald-600 font-bold">✓</span> No child evaluation pressure
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. DIRECT 1-TAP MENTORS CONTACT GRID ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-lime-subtle/40 border-b border-lime-accent/40">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="space-y-2">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-brand-dark font-bold">Direct Channels</span>
+            <h2 class="font-display text-2xl sm:text-3xl font-black text-ink-900 tracking-tight">
+              Connect Directly with Our Mentors
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-700">
+              Tap to call or message directly on WhatsApp. We typically respond within a few hours.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-ink-600 font-semibold bg-white px-3 py-1.5 rounded-full border border-lime-accent/50 shadow-2xs">
+            Open Mon–Sat: 9:00 AM – 6:00 PM IST
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {mentors.map((m) => (
+            <div class="p-5 rounded-2xl bg-white border border-lime-accent/60 shadow-xs space-y-4 flex flex-col justify-between hover:shadow-card transition-all">
+              <div class="space-y-2.5">
+                <div class="w-10 h-10 rounded-xl bg-lime-subtle flex items-center justify-center text-xl">
+                  {m.icon}
+                </div>
+                <div>
+                  <span class="text-[10px] font-mono uppercase tracking-wider text-brand-forest font-bold block">
+                    {m.role}
+                  </span>
+                  <h4 class="font-display text-base font-bold text-ink-900">
+                    {m.name}
+                  </h4>
+                </div>
+                <p class="text-xs text-ink-600 leading-relaxed">
+                  {m.desc}
+                </p>
+                <div class="font-mono text-xs font-bold text-ink-900 pt-1">
+                  {m.phone}
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-3 border-t border-ink-100 flex items-center gap-2">
+                <a 
+                  href={`https://wa.me/${m.cleanPhone}?text=${encodeURIComponent(m.waMsg)}`}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-mono font-bold text-center flex items-center justify-center gap-1 transition-colors"
+                >
+                  <span>💬</span> WhatsApp
+                </a>
+                <a 
+                  href={`tel:${m.phone.replace(/\s+/g, '')}`}
+                  class="px-3 py-2 rounded-xl bg-canvas hover:bg-ink-100 border border-ink-200 text-ink-800 text-[11px] font-mono font-bold text-center transition-colors"
+                  title="Call Phone"
+                >
+                  📞
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4. CAMPUS LOCATION & INTERACTIVE INQUIRY FORM ── -->
+    <section class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-canvas">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Left: Campus Details & Facilities -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <span class="text-[11px] font-mono uppercase tracking-widest text-brand-forest font-bold">Physical Sanctuary</span>
+            <h2 class="font-display text-3xl font-black text-ink-900 tracking-tight">
+              Dhayari Campus, Pune
+            </h2>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed">
+              Nestled near the scenic Sahyadri hills in Dhayari, our campus is designed as an open eco-sanctuary rather than a commercial concrete box.
+            </p>
+          </div>
+
+          <!-- Address Card -->
+          <div class="p-6 rounded-3xl bg-white border border-ink-200/90 shadow-2xs space-y-4">
+            <div class="space-y-1.5">
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">Campus Address</span>
+              <p class="font-display font-bold text-base text-ink-900">
+                Nilu Bhau Limaye Sankul • Paryay Parisanstha
+              </p>
+              <p class="text-xs text-ink-700 leading-relaxed">
+                Lane No. 35, Survey No. 155, South of DSK Vishwa Road, Dhayari Gaon, Sinhagad Road, Pune, Maharashtra 411041, India.
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-ink-100 flex flex-wrap gap-2">
+              <a 
+                href="https://maps.google.com/?q=Dhayari+Pune+411041" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-dark hover:bg-brand-forest text-white text-xs font-mono font-bold transition-colors"
+              >
+                <span>📍</span> Open Google Maps &rarr;
+              </a>
+              <span class="inline-flex items-center text-xs font-mono text-ink-500 px-2 py-2">
+                Landmark: Near DSK Vishwa Road
+              </span>
+            </div>
+          </div>
+
+          <!-- 4 Sanctuary Learning Zones -->
+          <div class="space-y-3">
+            <span class="text-[11px] font-mono uppercase tracking-wider font-bold text-ink-600">Sanctuary Learning Zones on Campus:</span>
+            
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-3 rounded-2xl bg-white border border-ink-200/80 space-y-1">
+                <span class="font-bold text-brand-forest">🛠️ Yantralaya</span>
+                <p class="text-[11px] text-ink-600">Hands-on woodwork, cycle mechanics, &amp; tool crafting.</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-white border border-ink-200/80 space-y-1">
+                <span class="font-bold text-brand-forest">🍲 Bhojanalaya</span>
+                <p class="text-[11px] text-ink-600">Community kitchen with organic grain cooking &amp; math.</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-white border border-ink-200/80 space-y-1">
+                <span class="font-bold text-brand-forest">📚 BAMS Library</span>
+                <p class="text-[11px] text-ink-600">Rare multilingual children’s literature &amp; floor mats.</p>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-white border border-ink-200/80 space-y-1">
+                <span class="font-bold text-brand-forest">🌾 Vanashala</span>
+                <p class="text-[11px] text-ink-600">Native soil garden, composting, &amp; outdoor hill trails.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email channels -->
+          <div class="p-4 rounded-2xl bg-canvas border border-ink-200 text-xs text-ink-700 space-y-1 font-mono">
+            <p><strong>Primary Inquiries:</strong> paryaydschool@gmail.com</p>
+            <p><strong>Trust Correspondence:</strong> ypnexusf@gmail.com</p>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Scheduling / Inquiry Form -->
+        <div class="lg:col-span-7 bg-white rounded-3xl sm:rounded-4xl p-7 sm:p-10 border border-ink-200/90 shadow-card">
+          <div class="space-y-2 pb-6 border-b border-ink-100">
+            <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">
+              Mutual Dialogue Request
+            </span>
+            <h3 class="font-display text-2xl sm:text-3xl font-black text-ink-900 tracking-tight">
+              Schedule a Campus Visit &amp; Chai
+            </h3>
+            <p class="text-xs sm:text-sm text-ink-600 leading-relaxed">
+              Tell us a little about your family and child. A learning mentor will connect with you to arrange a calm, personal dialogue.
+            </p>
+          </div>
+
+          <!-- Form with live client feedback -->
+          <form id="admissions-inquiry-form" class="space-y-5 pt-6">
+            
+            <!-- Parent Name & Phone -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700" for="parent-name">
+                  Parent / Guardian Name *
+                </label>
+                <input 
+                  type="text" 
+                  id="parent-name" 
+                  name="parentName"
+                  required 
+                  placeholder="e.g. Rohini Deshmukh" 
+                  class="w-full px-4 py-2.5 rounded-xl bg-canvas border border-ink-200 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+                />
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700" for="contact-phone">
+                  Phone / WhatsApp Number *
+                </label>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  name="phone"
+                  required 
+                  placeholder="e.g. 98220 12345" 
+                  class="w-full px-4 py-2.5 rounded-xl bg-canvas border border-ink-200 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Email & Child Age -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700" for="email">
+                  Email Address
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  placeholder="name@example.com" 
+                  class="w-full px-4 py-2.5 rounded-xl bg-canvas border border-ink-200 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+                />
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700" for="child-age">
+                  Child’s Age / Current Standard
+                </label>
+                <input 
+                  type="text" 
+                  id="child-age" 
+                  name="childAge"
+                  placeholder="e.g. 7 years old (2nd Std)" 
+                  class="w-full px-4 py-2.5 rounded-xl bg-canvas border border-ink-200 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+                />
+              </div>
+            </div>
+
+            <!-- Program Interest Radio Selection -->
+            <div class="space-y-2">
+              <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700 block">
+                Primary Program of Interest:
+              </label>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="Balmitee (3-8y)" checked class="text-brand-forest focus:ring-brand-forest" />
+                  <span>🌱 <strong>Balmitee</strong> (Ages 3–8)</span>
+                </label>
+
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="PND Novice (8-12y)" class="text-brand-forest focus:ring-brand-forest" />
+                  <span>🔬 <strong>PND Novice</strong> (Ages 8–12)</span>
+                </label>
+
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="PJD Juvenile (12-20y)" class="text-brand-forest focus:ring-brand-forest" />
+                  <span>🎓 <strong>PJD Juvenile</strong> (Ages 12–20)</span>
+                </label>
+
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="WAI Diagnostic (75 Days)" class="text-brand-forest focus:ring-brand-forest" />
+                  <span>📋 <strong>WAI Diagnostic</strong> (75 Days)</span>
+                </label>
+
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="NeRo Screen-Free (2-100y)" class="text-brand-forest focus:ring-brand-forest" />
+                  <span>🪵 <strong>NeRo Screen-Free</strong> (2–100y)</span>
+                </label>
+
+                <label class="flex items-center gap-2 p-2.5 rounded-xl bg-canvas border border-ink-200/80 cursor-pointer hover:border-brand-forest transition-colors">
+                  <input type="radio" name="program" value="Vartul Parenting Course" class="text-brand-forest focus:ring-brand-forest" />
+                  <span>👥 <strong>Vartul Parent Course</strong></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Message / Notes -->
+            <div class="space-y-1.5">
+              <label class="text-xs font-mono font-bold uppercase tracking-wider text-ink-700" for="notes">
+                What sparks your interest in alternative open schooling?
+              </label>
+              <textarea 
+                id="notes" 
+                name="notes"
+                rows="3" 
+                placeholder="Share your thoughts, specific questions, or any challenges your child faces with conventional school..." 
+                class="w-full px-4 py-2.5 rounded-xl bg-canvas border border-ink-200 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button & Disclaimer -->
+            <div class="pt-2 space-y-3">
+              <button 
+                type="submit" 
+                id="submit-inquiry-btn"
+                class="w-full py-3.5 px-6 rounded-full bg-brand-dark hover:bg-brand-forest text-white text-xs sm:text-sm font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Request Informal Dialogue &amp; Visit</span> &rarr;
+              </button>
+
+              <div id="form-success-alert" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs space-y-1">
+                <p class="font-bold">✓ Dialogue Request Received!</p>
+                <p>Thank you for reaching out. Our learning associate will contact you on WhatsApp / Phone within 24 hours to coordinate your visit.</p>
+              </div>
+
+              <p class="text-[11px] text-ink-500 text-center font-mono">
+                🔒 Your privacy is respected. We never share contact details or engage in spam.
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+
+  <script>
+    const form = document.getElementById('admissions-inquiry-form') as HTMLFormElement | null;
+    const successAlert = document.getElementById('form-success-alert');
+    const submitBtn = document.getElementById('submit-inquiry-btn');
+
+    if (form && successAlert && submitBtn) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const parentName = (document.getElementById('parent-name') as HTMLInputElement)?.value || '';
+        const phone = (document.getElementById('contact-phone') as HTMLInputElement)?.value || '';
+        const selectedProg = (form.querySelector('input[name="program"]:checked') as HTMLInputElement)?.value || 'General';
+
+        // Display immediate confirmation UI
+        successAlert.classList.remove('hidden');
+        submitBtn.setAttribute('disabled', 'true');
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        submitBtn.innerHTML = '<span>Dialogue Request Sent ✓</span>';
+
+        // Provide an optional direct WhatsApp link for impatient users
+        const waText = encodeURIComponent(`Hello YP Nexus, I am ${parentName} (${phone}). I just submitted an inquiry for ${selectedProg} and would love to schedule a visit to Dhayari campus.`);
+        
+        setTimeout(() => {
+          const directWa = document.createElement('div');
+          directWa.className = 'text-center pt-2';
+          directWa.innerHTML = `
+            <a href="https://wa.me/919423789914?text=${waText}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-700 hover:underline">
+              <span>💬</span> Also send instantly to mentor via WhatsApp &rarr;
+            </a>
+          `;
+          successAlert.appendChild(directWa);
+        }, 600);
+      });
+    }
+  </script>
+</Layout>

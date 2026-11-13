@@ -1,0 +1,403 @@
+---
+// Page: /faq - Field Inquiries & Parent Psychology Guidance
+// Designed with psychological reassurance, live interactive search & category filtering, 
+// and clear answers to real parent inquiries extracted from Vartul FLM materials.
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    id: 1,
+    q: "Is Paryay Dschool an approved or accredited NIOS study center?",
+    a: "Paryay Dschool is an independent alternative learning sanctuary working *Towards Open Schooling*. We are not a commercial franchise or affiliated exam center. Instead, we prepare learners with deep conceptual mastery, and they appear independently as private candidates for official 10th (Secondary) and 12th (Senior Secondary) board certificates via NIOS (National Institute of Open Schooling) or MsBOS (Maharashtra State Board of Open Schooling).",
+    category: "accreditation",
+    badge: "Official Boards",
+    keyHighlight: "100% Legally Recognized for All Universities, UPSC, NEET & JEE."
+  },
+  {
+    id: 2,
+    q: "Will top universities, professional degrees, or foreign colleges accept open schooling certificates?",
+    a: "Yes, absolutely. By official decree of the Ministry of Education (Govt. of India), the Association of Indian Universities (AIU), and Medical/Engineering regulatory bodies, NIOS and MsBOS certificates hold equal legal standing to CBSE, ICSE, or State boards. Paryay learners have successfully pursued higher education across engineering, medicine, humanities, visual arts, design, and foreign universities.",
+    category: "accreditation",
+    badge: "Higher Studies",
+    keyHighlight: "Recognized by AIU, IIT-JEE, NEET, UPSC, and international universities."
+  },
+  {
+    id: 3,
+    q: "Can my child transition back to a conventional school or college later if we relocate?",
+    a: "Yes. Because NIOS and MsBOS are recognized by all state education departments, learners can seamlessly transfer between open schooling and mainstream schools or Junior Colleges (FYJC / XI standard) at recognized checkpoint years (such as after 5th, 8th, or 10th standard) using their official board marksheets and transfer certificates.",
+    category: "accreditation",
+    badge: "Mobility",
+    keyHighlight: "Seamless lateral transfers at 5th, 8th, 10th, and 12th checkpoints."
+  },
+  {
+    id: 4,
+    q: "Why are there no textbooks, rote examinations, or homework?",
+    a: "Traditional homework often turns family evenings into battles over worksheets and induces severe childhood anxiety without building real capabilities. At Paryay, learning is integrated into the daily sanctuary hours through the Fundamental Learning Methodology (FLM). Children handle real tools, cook meals, measure wood, observe hill ecology, and write field notes. When they return home, family time is preserved for rest, conversation, and emotional bonding.",
+    category: "daily-life",
+    badge: "Sanctuary Life",
+    keyHighlight: "Zero punitive exams or stressful homework tears. Family peace restored."
+  },
+  {
+    id: 5,
+    q: "How does the 1:6 mentor-to-learner ratio operate in practice?",
+    a: "In conventional classrooms with 40 to 60 students, teachers teach to the average and 'slow learners' are quickly left behind or labeled. At Paryay, one dedicated mentor works closely with only 6 learners. Mentors observe each child's innate learning pace, cognitive style, and emotional sensitivities, maintaining a deeply documented individual growth portfolio reviewed jointly with parents.",
+    category: "daily-life",
+    badge: "Individual Attention",
+    keyHighlight: "1 mentor to 6 learners. Deep observation, no child is lost in the crowd."
+  },
+  {
+    id: 6,
+    q: "What does a typical day look like for a learner at Paryay Dschool?",
+    a: "The day begins at 9:30 AM with circle gathering, physical movement, and breathing. The morning is dedicated to hands-on life trades and tool exploration in our Yantralaya workshop. At midday, learners co-prepare organic lunch and clean up together, practicing mathematical scaling and sensory responsibility. Afternoons involve multilingual literature inquiry, outdoor ecological expeditions on Dhayari hills, and end-of-day reflective journaling.",
+    category: "daily-life",
+    badge: "Sanctuary Routine",
+    keyHighlight: "9:30 AM to 4:30 PM: Integrated balance of mind, hands, soil, and reflection."
+  },
+  {
+    id: 7,
+    q: "How do children socialize and make friends without traditional standard classes?",
+    a: "Real life is mixed-age, not segregated by birth year. At Paryay, learners of different age groups collaborate on building projects, drama, cooking, and expeditions. Older learners mentor younger ones, developing natural empathy and patience, while younger children learn mature socialization without the bullying and peer pressure prevalent in large factory schools.",
+    category: "daily-life",
+    badge: "Socialization",
+    keyHighlight: "Organic mixed-age co-learning mirroring real community life."
+  },
+  {
+    id: 8,
+    q: "What is the Vartul FLM Parent Co-Learning Course?",
+    a: "A child's education cannot succeed if home and school are at war. Through our Vartul Service Center, we conduct an 18-session weekend dialogue course ('Understanding Learning for Parents & Grands'). Parents learn brain development stages, gentle ways to reduce digital screen dependency, and how to create a supportive, stress-free learning atmosphere at home.",
+    category: "parenting",
+    badge: "Parent Community",
+    keyHighlight: "18-session guided dialogue for parents, grandparents, and caregivers."
+  },
+  {
+    id: 9,
+    q: "My child is addicted to screens and smartphones. Can Paryay help?",
+    a: "Yes. Screen addiction is often a natural symptom of boredom and sensory deprivation in modern indoor life. At Paryay, children engage their hands, eyes, and muscles in woodworking, gardening, cycling, and storytelling. Through our NeRo (EcoLogic) screen-free program, children discover the joy of real physical creation, and their dependence on digital screens drops naturally without shouting or force.",
+    category: "parenting",
+    badge: "Screen-Free Living",
+    keyHighlight: "Replacing artificial digital dopamine with genuine tangible creation."
+  },
+  {
+    id: 10,
+    q: "What are the school fees and how are contributions utilized?",
+    a: "As a registered charitable trust (YP Nexus Foundation / Paryay Parisanstha), we operate on a non-profit, transparent fee structure that sustains our high mentor-to-learner ratio (1:6), learning tools, field expedition logistics, and nutritious shared meals. We also maintain a scholarship fund for underprivileged learners. Exact contribution schedules are shared openly during the mutual admissions dialogue.",
+    category: "admissions",
+    badge: "Transparent Trust",
+    keyHighlight: "Registered charitable trust. Non-commercial, high mentor investment."
+  },
+  {
+    id: 11,
+    q: "What is the admission procedure? Is there an entrance exam for the child?",
+    a: "No! We strictly reject stressful entrance tests and interviews that label young children. Our process is a 3-Step Mutual Alignment Dialogue: (1) An informal tea-and-conversation meeting with parents, (2) A half-day campus discovery experience for the child to explore tools and peers, and (3) A joint collaborative agreement between mentors and parents.",
+    category: "admissions",
+    badge: "No Stress Entry",
+    keyHighlight: "No stressful entrance tests. Mutual alignment based on child readiness."
+  },
+  {
+    id: 12,
+    q: "What if my child has a specific learning gap or needs diagnostic assessment first?",
+    a: "We offer the WAI (Who Am I?) 75-Day Comprehensive Diagnostic Program. Before making any long-term schooling commitment, your child undergoes an objective audit across standards and subjects to map their true cognitive strengths and gaps. Parents receive a detailed status report and tailored learning roadmap.",
+    category: "admissions",
+    badge: "WAI Diagnostic",
+    keyHighlight: "75-day objective capability audit before making long-term commitments."
+  }
+];
+
+const categories = [
+  { id: "all", label: "All Inquiries", count: faqs.length },
+  { id: "accreditation", label: "Accreditation & Boards", count: faqs.filter(f => f.category === 'accreditation').length },
+  { id: "daily-life", label: "Daily Sanctuary Life", count: faqs.filter(f => f.category === 'daily-life').length },
+  { id: "parenting", label: "Parenting & Vartul", count: faqs.filter(f => f.category === 'parenting').length },
+  { id: "admissions", label: "Admissions & Trust", count: faqs.filter(f => f.category === 'admissions').length }
+];
+---
+
+<Layout 
+  title="Field Inquiries & Parent Guidance (FAQ) | YP Nexus Foundation"
+  description="Clear, authoritative answers to parental questions regarding open schooling accreditation (NIOS/MsBOS), 1:6 mentor ratio, lack of exams, screen-free living, and admissions in Dhayari, Pune."
+>
+  <Navbar isStandalone={true} />
+
+  <main class="flex-grow">
+    
+    <!-- ── 1. EDITORIAL HERO ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white border-b border-white/10 relative overflow-hidden">
+      <!-- Glow effect -->
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-lime-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-mono uppercase tracking-wider text-lime-accent font-bold">
+          <span>05 / Parent &amp; Community Dialogue</span>
+        </div>
+        
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] [text-wrap:balance]">
+          Field Inquiries: Clear answers for thoughtful families.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+          Choosing an alternative to mainstream schooling naturally brings valid questions. Here is an honest, transparent breakdown of our accreditation, daily learning rhythms, and admissions dialogue in Pune.
+        </p>
+
+        <!-- 3 Psychological Peace-of-Mind Badges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+            <span class="text-xl shrink-0">🎓</span>
+            <div>
+              <p class="font-display font-bold text-white text-xs sm:text-sm">100% Degree Eligible</p>
+              <p class="text-[11px] text-white/60">NIOS &amp; MsBOS boards fully recognized by AIU, UPSC, NEET &amp; foreign colleges.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+            <span class="text-xl shrink-0">🤝</span>
+            <div>
+              <p class="font-display font-bold text-white text-xs sm:text-sm">1:6 Dedicated Attention</p>
+              <p class="text-[11px] text-white/60">Strict 1 mentor to 6 learners. Deep observation, no child is labeled or lost.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
+            <span class="text-xl shrink-0">🚫</span>
+            <div>
+              <p class="font-display font-bold text-white text-xs sm:text-sm">Zero Homework Tears</p>
+              <p class="text-[11px] text-white/60">Integrated day of soil, tools, and reflection. Family evenings preserved for joy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. INTERACTIVE SEARCH & CATEGORY FILTER BAR ── -->
+    <section class="sticky top-20 z-30 w-full py-4 px-4 sm:px-6 lg:px-8 bg-canvas/95 backdrop-blur-md border-b border-ink-200 shadow-2xs">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- Live Search Input -->
+        <div class="relative w-full md:w-80">
+          <input 
+            type="text" 
+            id="faq-search" 
+            placeholder="Search inquiries (e.g., NIOS, fees, ratio)..." 
+            class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-ink-200 text-xs sm:text-sm text-ink-900 placeholder:text-ink-400 focus:outline-none focus:border-brand-forest focus:ring-1 focus:ring-brand-forest transition-all"
+          />
+          <svg class="w-4 h-4 text-ink-400 absolute left-3 top-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto" id="category-pills">
+          {categories.map((cat, idx) => (
+            <button 
+              type="button"
+              data-cat={cat.id} 
+              class={`faq-filter-btn px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all ${
+                idx === 0 
+                  ? 'bg-brand-dark text-white shadow-2xs' 
+                  : 'bg-white hover:bg-lime-subtle text-ink-700 border border-ink-200/80'
+              }`}
+            >
+              {cat.label} ({cat.count})
+            </button>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. FAQ ACCORDION LIST ── -->
+    <section class="w-full py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-canvas">
+      <div class="max-w-5xl mx-auto space-y-6">
+        
+        <!-- Action Row (Count & Expand All) -->
+        <div class="flex items-center justify-between text-xs font-mono text-ink-500 px-1">
+          <span id="faq-match-count">Showing all {faqs.length} questions</span>
+          <button id="toggle-all-faqs" type="button" class="font-bold text-brand-forest hover:text-brand-dark underline cursor-pointer">
+            Expand All Answers
+          </button>
+        </div>
+
+        <!-- Questions List -->
+        <div class="space-y-4" id="faq-accordion-list">
+          {faqs.map((faq) => (
+            <details 
+              data-category={faq.category} 
+              data-question={faq.q.toLowerCase()} 
+              data-answer={faq.a.toLowerCase()}
+              class="faq-card group bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-ink-200/90 shadow-xs hover:border-lime-accent transition-all duration-200 open:shadow-card open:border-lime-accent"
+            >
+              <summary class="flex justify-between items-start cursor-pointer list-none gap-4">
+                <div class="flex items-start gap-3 sm:gap-4">
+                  <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-lime-subtle text-brand-dark flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5">
+                    {faq.id < 10 ? `0${faq.id}` : faq.id}
+                  </span>
+                  <div class="space-y-1">
+                    <span class="font-display text-base sm:text-xl font-bold text-ink-900 group-hover:text-brand-forest transition-colors block">
+                      {faq.q}
+                    </span>
+                    <span class="inline-block px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-canvas text-ink-500 font-bold">
+                      {faq.badge}
+                    </span>
+                  </div>
+                </div>
+
+                <span class="w-8 h-8 rounded-full bg-canvas border border-ink-200 flex items-center justify-center text-ink-700 shrink-0 group-open:rotate-180 group-open:bg-lime-accent group-open:text-ink-900 transition-all duration-300">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+
+              <div class="mt-4 pt-4 border-t border-ink-100 space-y-3 pl-10 sm:pl-12">
+                <p class="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal">
+                  {faq.a}
+                </p>
+                <div class="p-2.5 rounded-xl bg-lime-subtle/80 border border-lime-accent/50 text-xs font-medium text-brand-dark flex items-center gap-2">
+                  <span class="font-bold font-mono uppercase text-[10px]">Takeaway:</span>
+                  <span>{faq.keyHighlight}</span>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Empty State (When search yields no results) -->
+        <div id="faq-empty-state" class="hidden text-center py-16 p-8 rounded-3xl bg-white border border-ink-200 space-y-4">
+          <span class="text-4xl">🔍</span>
+          <h3 class="font-display text-xl font-bold text-ink-900">No matching questions found</h3>
+          <p class="text-xs sm:text-sm text-ink-600 max-w-md mx-auto">
+            We haven't listed this specific question yet. Connect directly with our mentors and we will gladly answer you.
+          </p>
+          <a 
+            href="https://wa.me/919423789914?text=Hello%20YP%20Nexus,%20I%20have%20a%20question%20about%20your%20programs" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold font-mono transition-colors"
+          >
+            Ask Us Directly on WhatsApp &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4. STILL HAVE QUESTIONS CTA BOX ── -->
+    <section class="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-ink-200">
+      <div class="max-w-4xl mx-auto rounded-3xl sm:rounded-4xl p-8 sm:p-12 bg-lime-subtle/90 border border-lime-accent/70 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-brand-dark">Direct Mentor Access</span>
+          <h3 class="font-display text-2xl sm:text-3xl font-black text-ink-900 tracking-tight">
+            Prefer a direct conversation?
+          </h3>
+          <p class="text-xs sm:text-sm text-ink-700 max-w-lg">
+            Every child is unique. Call or WhatsApp our mentors directly for a transparent, friendly chat without any admission obligations.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a 
+            href="https://wa.me/919423789914?text=Hello%20YP%20Nexus,%20I%20would%20like%20to%20discuss%20admissions%20dialogue."
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider shadow-xs transition-all"
+          >
+            💬 WhatsApp Mentor
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-dark hover:bg-brand-forest text-white text-xs font-bold uppercase tracking-wider shadow-xs transition-all"
+          >
+            Visit Dhayari Campus &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+
+  <!-- Client-side Interactive Filter & Search Script -->
+  <script>
+    const searchInput = document.getElementById('faq-search') as HTMLInputElement | null;
+    const filterButtons = document.querySelectorAll('.faq-filter-btn');
+    const faqCards = document.querySelectorAll('.faq-card') as NodeListOf<HTMLDetailsElement>;
+    const matchCount = document.getElementById('faq-match-count');
+    const emptyState = document.getElementById('faq-empty-state');
+    const toggleAllBtn = document.getElementById('toggle-all-faqs');
+
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    function filterFaqs() {
+      let visibleCount = 0;
+
+      faqCards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        const q = card.getAttribute('data-question') || '';
+        const a = card.getAttribute('data-answer') || '';
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = (currentSearch === '' || q.includes(currentSearch) || a.includes(currentSearch));
+
+        if (matchesCat && matchesQuery) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (matchCount) {
+        matchCount.textContent = `Showing ${visibleCount} question${visibleCount === 1 ? '' : 's'}`;
+      }
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // Category click handler
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-brand-dark', 'text-white', 'shadow-2xs');
+          b.classList.add('bg-white', 'text-ink-700', 'border', 'border-ink-200/80');
+        });
+
+        btn.classList.add('bg-brand-dark', 'text-white', 'shadow-2xs');
+        btn.classList.remove('bg-white', 'text-ink-700', 'border', 'border-ink-200/80');
+
+        currentCategory = btn.getAttribute('data-cat') || 'all';
+        filterFaqs();
+      });
+    });
+
+    // Search input handler
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = (e.target as HTMLInputElement).value.trim().toLowerCase();
+        filterFaqs();
+      });
+    }
+
+    // Toggle All Accordions
+    if (toggleAllBtn) {
+      let allOpen = false;
+      toggleAllBtn.addEventListener('click', () => {
+        allOpen = !allOpen;
+        faqCards.forEach((card) => {
+          if (!card.classList.contains('hidden')) {
+            card.open = allOpen;
+          }
+        });
+        toggleAllBtn.textContent = allOpen ? 'Collapse All Answers' : 'Expand All Answers';
+      });
+    }
+  </script>
+</Layout>

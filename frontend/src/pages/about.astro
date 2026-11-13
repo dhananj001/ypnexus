@@ -1,0 +1,391 @@
+---
+// Page: /about - Our Ethos, Living Sanctuary & Fundamental Learning Methodology
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const comparisons = [
+  {
+    topic: "Teacher-to-Learner Ratio",
+    traditional: "1 teacher manages 40 to 60 students. Fast students get bored; slower learners are left behind or labeled.",
+    ypnexus: "Strict 1:6 dedicated mentor ratio. Every child’s individual cognitive and emotional trajectory is documented daily."
+  },
+  {
+    topic: "Curriculum & Age Cohorts",
+    traditional: "Rigid artificial walls of standards based solely on factory birth years. Standardized rote textbooks.",
+    ypnexus: "Life content across ages and streams. Mixed-age collaboration where older and younger children co-learn and mentor."
+  },
+  {
+    topic: "Examinations & Homework",
+    traditional: "Stressful quarterly exams, ranking, and punitive homework that turns family evenings into anxious battles.",
+    ypnexus: "Zero stressful exams or home worksheets. Monthly progress reviews conducted through thoughtful dialogue with parents."
+  },
+  {
+    topic: "Learning Environment",
+    traditional: "4 concrete walls, rows of uniform desks, fluorescent lighting, and total separation from natural ecosystems.",
+    ypnexus: "Open sanctuaries, native bamboo mulch courtyards, tool workshops (Yantralaya), community kitchen, and Sahyadri hill trails."
+  },
+  {
+    topic: "Board Validation & University",
+    traditional: "Compulsory attachment to one commercial board with heavy bag syndrome and rote syllabus cramming.",
+    ypnexus: "Towards Open Schooling: Independent registration under NIOS / MsBOS, 100% legally recognized by AIU, UPSC, NEET & JEE."
+  }
+];
+
+const dayTimeline = [
+  {
+    time: "09:30 AM",
+    title: "Prabhat Vartul & Natural Movement",
+    badge: "Awakening & Intention",
+    icon: "🌅",
+    desc: "Gathering in an open circle for rhythmic breathing, natural body movement, and setting the individual inquiry intention for the day."
+  },
+  {
+    time: "10:15 AM",
+    title: "Yantralaya & Hands-on Life Trades",
+    badge: "Practical Mastery",
+    icon: "🛠️",
+    desc: "Handling real carpentry tools, bicycle mechanical repair, electrical circuits, clay modeling, and tactile craftsmanship."
+  },
+  {
+    time: "12:30 PM",
+    title: "Bhojan Sanskar & Community Cooking",
+    badge: "Life Science & Math",
+    icon: "🍲",
+    desc: "Learners co-measure grains, prepare nutritious organic lunch, serve peers, and clean together—integrating fractions, chemistry, and responsibility."
+  },
+  {
+    time: "01:30 PM",
+    title: "BAMS Multilingual Literary Circles",
+    badge: "Curiosity & Stories",
+    icon: "📚",
+    desc: "Deep immersion in our multilingual children's library. Reading rare Marathi, Hindi, and English literature on floor scrolls."
+  },
+  {
+    time: "03:00 PM",
+    title: "Dhayari Hills & Ecological Field Study",
+    badge: "Living Ecology",
+    icon: "🌿",
+    desc: "Outdoor walking expeditions into surrounding Sahyadri hills, native soil composting, bird watching, and biodiversity field notes."
+  },
+  {
+    time: "04:15 PM",
+    title: "Sanchay Vartul (Reflective Journaling)",
+    badge: "Consolidation",
+    icon: "✍️",
+    desc: "Personal journaling of what was discovered, emotional check-in with mentors, and preparing to return home for joyful family evenings."
+  }
+];
+
+const pieseDimensions = [
+  {
+    letter: "P",
+    dimension: "Physical Agility & Somatics",
+    icon: "🏃",
+    description: "Major and minor motor skills, tactile coordination, tool handling, cycling, and natural outdoor movement on hilly terrain."
+  },
+  {
+    letter: "I",
+    dimension: "Intellectual Inquiry",
+    icon: "💡",
+    description: "Curiosity-driven questioning, scientific logic, life trades understanding, and real-world problem-solving over rote memory."
+  },
+  {
+    letter: "E",
+    dimension: "Emotional Resilience",
+    icon: "❤️",
+    description: "Freedom of self-expression, transforming misunderstood feelings into understood growth without punitive shaming or marks comparison."
+  },
+  {
+    letter: "S",
+    dimension: "Societal Orbits & Socialization",
+    icon: "🤝",
+    description: "Cooperation across mixed age groups, empathy for community workers, civic responsibility, and living harmoniously with peers."
+  },
+  {
+    letter: "E",
+    dimension: "Ecological Sensitization",
+    icon: "🌱",
+    description: "Direct tactile connection to native soil, seasonal weather, organic food cycles, water audits, and biodiversity conservation."
+  }
+];
+
+const sanctuaryZones = [
+  {
+    name: "Yantralaya (Tool Workshop)",
+    tag: "Maker Space",
+    desc: "Real saws, hammers, bicycle repair stands, and electronics where hands learn to think.",
+    img: "/images/content_assets/08_activity_photographs_section_g/image50.jpeg"
+  },
+  {
+    name: "BAMS Multilingual Library",
+    tag: "Literature Haven",
+    desc: "Rare Marathi, Hindi, and English children's books arranged in open floor scroll spaces.",
+    img: "/images/content_assets/07_activity_photographs_section_f/image47.jpeg"
+  },
+  {
+    name: "Bhojanalaya (Living Kitchen)",
+    tag: "Community Nutrition",
+    desc: "Rolling pins, stone mortars, and grain measurements where children cook real wholesome meals.",
+    img: "/images/content_assets/08_activity_photographs_section_g/image58.jpeg"
+  },
+  {
+    name: "Vanashala & Dhayari Hills",
+    tag: "Open Ecology",
+    desc: "Native soil mulch courtyards, vegetable beds, and hill trail expeditions right outside the door.",
+    img: "/images/content_assets/08_activity_photographs_section_g/image64.jpeg"
+  }
+];
+---
+
+<Layout 
+  title="Our Ethos & Foundation | YP Nexus Foundation"
+  description="Explore the philosophy, Fundamental Learning Methodology (FLM), and 1:6 mentoring sanctuary of YP Nexus Foundation (Paryay Parisanstha) in Pune, India."
+>
+  <Navbar isStandalone={true} />
+
+  <main class="flex-grow">
+    
+    <!-- ── 1. EDITORIAL HERO ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white border-b border-white/10 relative overflow-hidden">
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-lime-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-mono uppercase tracking-wider text-lime-accent font-bold">
+          <span>Our Ethos &amp; Foundation Philosophy</span>
+        </div>
+        
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] [text-wrap:balance]">
+          Alternatives for an <span class="text-lime-accent underline decoration-lime-accent/40 decoration-4 underline-offset-4">ecologically sensitive</span> life &amp; learning.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+          YP Nexus Foundation (Paryay Parisanstha) is a registered charitable trust in Pune, Maharashtra. We were founded by compeer citizens, educators, and field researchers who asked a fundamental question: <em>What kind of school does a human child truly need in the 21st century?</em>
+        </p>
+
+        <!-- Stats Bar -->
+        <div class="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono">
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            Est. 2018 • Pune, India
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-lime-accent text-ink-900 font-bold">
+            1:6 Mentor-to-Learner Ratio
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            Zero Punitive Homework
+          </span>
+          <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/90">
+            Towards Open Schooling (NIOS / MsBOS)
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. THE PSYCHOLOGICAL CONTRAST: FACTORY SYSTEM VS. LIVING SANCTUARY ── -->
+    <section class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-ink-200">
+      <div class="max-w-6xl mx-auto space-y-12">
+        
+        <div class="reveal-item text-center max-w-2xl mx-auto space-y-3">
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-forest">The Paradigm Shift</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink-900 tracking-tight leading-tight">
+            How YP Nexus differs from conventional schooling.
+          </h2>
+          <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+            A side-by-side view of why families transition from standard exam pressure to our open learning sanctuary.
+          </p>
+        </div>
+
+        <!-- Bento Comparison Grid -->
+        <div class="space-y-4">
+          {comparisons.map((item, idx) => (
+            <div class="reveal-item bg-canvas rounded-3xl p-6 sm:p-7 border border-ink-200/90 shadow-2xs grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              
+              <!-- Topic -->
+              <div class="md:col-span-3 space-y-1">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-ink-400 font-bold">0{idx + 1} / Topic</span>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-ink-900">{item.topic}</h3>
+              </div>
+
+              <!-- Traditional Schooling -->
+              <div class="md:col-span-4 p-4 rounded-2xl bg-white border border-rose-200/70 text-xs sm:text-sm text-ink-700 leading-relaxed">
+                <span class="text-[10px] font-mono font-bold text-rose-700 uppercase tracking-wider block mb-1">
+                  ✕ Conventional Assembly School
+                </span>
+                {item.traditional}
+              </div>
+
+              <!-- YP Nexus Sanctuary -->
+              <div class="md:col-span-5 p-4 rounded-2xl bg-lime-subtle border border-lime-accent/70 text-xs sm:text-sm text-ink-900 leading-relaxed shadow-xs">
+                <span class="text-[10px] font-mono font-bold text-brand-forest uppercase tracking-wider block mb-1">
+                  ✓ YP Nexus Alternative Sanctuary
+                </span>
+                {item.ypnexus}
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. A DAY IN THE LIFE AT PARYAY DSCHOOL (Demystifying Routine) ── -->
+    <section class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-canvas border-b border-ink-200">
+      <div class="max-w-6xl mx-auto space-y-12">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-forest">Sanctuary Rhythm</span>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 tracking-tight">
+            A Day in the Life of a Learner
+          </h2>
+          <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+            Without rigid bells and fragmented 40-minute periods, here is how a child experiences an integrated flow of mind, hands, nutrition, and nature.
+          </p>
+        </div>
+
+        <!-- 6-Stage Timeline Bento -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {dayTimeline.map((item) => (
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-ink-200/90 shadow-2xs hover:border-lime-accent hover:shadow-card transition-all duration-300 space-y-3 flex flex-col justify-between">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-2xl">{item.icon}</span>
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-lime-subtle text-brand-dark">
+                    {item.time}
+                  </span>
+                </div>
+
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono uppercase tracking-wider text-brand-forest font-bold block">
+                    {item.badge}
+                  </span>
+                  <h3 class="font-display text-lg font-bold text-ink-900">
+                    {item.title}
+                  </h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-ink-700 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+
+              <div class="pt-3 border-t border-ink-100 text-[10px] font-mono text-ink-400">
+                Paryay Living Rhythm
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4. FUNDAMENTAL LEARNING METHODOLOGY (PIESE DIMENSIONS) ── -->
+    <section class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-ink-200">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <div class="reveal-item flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-ink-200">
+          <div class="space-y-3 max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-subtle border border-lime-accent/50 text-[11px] font-mono uppercase tracking-wider text-brand-dark font-bold">
+              <span>Core Pedagogy</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 tracking-tight leading-[1.12]">
+              The 5 PIESE Dimensions of Child Culturing
+            </h2>
+            <p class="text-sm sm:text-base text-ink-700 leading-relaxed">
+              Based on the Fundamental Learning Methodology (FLM), child growth is mapped not by standardized test percentages, but across five holistic life dimensions.
+            </p>
+          </div>
+          <span class="text-xs font-mono text-ink-500 font-bold">5 Developmental Spheres</span>
+        </div>
+
+        <!-- 5 Bento Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {pieseDimensions.map((dim) => (
+            <div class="reveal-item bg-canvas rounded-3xl p-6 border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="w-12 h-12 rounded-2xl bg-white border border-ink-200 text-brand-forest flex items-center justify-center font-display font-black text-2xl group-hover:scale-110 group-hover:border-lime-accent transition-transform">
+                    {dim.letter}
+                  </div>
+                  <span class="text-2xl">{dim.icon}</span>
+                </div>
+                
+                <h3 class="font-display text-base sm:text-lg font-bold text-ink-900 leading-snug">
+                  {dim.dimension}
+                </h3>
+                
+                <p class="text-xs text-ink-600 leading-relaxed">
+                  {dim.description}
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-ink-200 mt-4 text-[10px] font-mono font-bold text-brand-forest uppercase">
+                FLM Framework
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 5. CAMPUS SANCTUARY BLUEPRINT (DHAYARI, PUNE) ── -->
+    <section class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-canvas border-b border-ink-200">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-ink-200">
+          <div class="space-y-3 max-w-3xl">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-forest">
+              Physical Habitat • Dhayari, Pune
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 tracking-tight">
+              Nilu Bhau Limaye Sankul
+            </h2>
+            <p class="text-sm sm:text-base text-ink-700 leading-relaxed">
+              Our campus is organized into four interactive sanctuary zones that allow learners to seamlessly transition between intellectual inquiry, physical craftsmanship, shared meals, and hillside ecology.
+            </p>
+          </div>
+
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-forest transition-colors shrink-0">
+            Book a Guided Campus Visit &rarr;
+          </a>
+        </div>
+
+        <!-- 4 Sanctuary Zones Bento -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {sanctuaryZones.map((zone) => (
+            <div class="bg-white rounded-3xl overflow-hidden border border-ink-200/90 shadow-2xs hover:shadow-card hover:border-lime-accent transition-all duration-300 flex flex-col justify-between group">
+              <div class="aspect-[4/3] overflow-hidden bg-earth-100">
+                <img 
+                  src={zone.img} 
+                  alt={zone.name} 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div class="p-5 space-y-2 flex-grow">
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-lime-subtle text-brand-dark font-bold">
+                  {zone.tag}
+                </span>
+                <h3 class="font-display text-lg font-bold text-ink-900">
+                  {zone.name}
+                </h3>
+                <p class="text-xs text-ink-600 leading-relaxed">
+                  {zone.desc}
+                </p>
+              </div>
+
+              <div class="px-5 pb-4 pt-2 border-t border-ink-100 text-[11px] font-mono text-brand-forest font-semibold">
+                Dhayari Campus Habitat
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

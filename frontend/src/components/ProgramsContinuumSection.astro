@@ -1,14 +1,17 @@
 ---
-// Section: Our Programs Continuum (Hierarchy requested in Document Section A & B)
-// Balmitee -> PND -> Paryay Juvenile -> yPOLEN -> Short Term WAI -> NeRo
-const programs = [
+// Section: Our Programs (Structured strictly according to the Official 3-Branch Organizational Hierarchy)
+// Branch 1: Paryay Dschool (Balmitee -> PND -> PJD)
+// Branch 2: yPOLEN (Higher Education / Open University Support)
+// Branch 3: Need-Based Programs (WAI Diagnostic + NeRo)
+
+const dschoolPrograms = [
   {
     id: "balmitee",
-    tag: "Early Childhood • Ages 3 to 8",
+    stage: "Stage 01 • Ages 3 to 8",
     title: "Balmitee",
     marathi: "बालमिती",
-    subtitle: "Fundamental Learning Methodology (FLM)",
-    description: "An open learning sanctuary connecting young children to native soil, orbital language, and major & minor physical growth without classroom walls.",
+    subtitle: "Formative Habitat Learning & FLM",
+    description: "An open learning sanctuary connecting early learners to native soil, orbital language, and major & minor physical growth without classroom walls.",
     banner: "/images/content_assets/03_programs_banners/balmitee_banner.jpeg",
     bullets: [
       "Physical major & minor growth & capability identification",
@@ -20,8 +23,8 @@ const programs = [
   },
   {
     id: "pnd",
-    tag: "Foundational • Ages 8 to 12",
-    title: "PND (Novice Dschool)",
+    stage: "Stage 02 • Ages 8 to 12",
+    title: "Paryay Novice Dschool (PND)",
     marathi: "पर्याय नोव्हईस डीस्कूल",
     subtitle: "Community Socialization & Scientific Curiosity",
     description: "Learners explore natural and human environments through real-life tasks, active socialization, and scientific inquiry across life trades.",
@@ -35,11 +38,11 @@ const programs = [
     contact: "9423789914 • paryaydschool@gmail.com"
   },
   {
-    id: "juvenile",
-    tag: "Adolescent & Senior • Ages 12 to 20",
-    title: "Paryay Juvenile Dschool",
+    id: "pjd",
+    stage: "Stage 03 • Ages 12 to 20",
+    title: "Paryay Juvenile Dschool (PJD)",
     marathi: "पर्याय जुव्हेनाईल डीस्कूल",
-    subtitle: "Multilingual • Multi-Board Open Learning Sanctuary",
+    subtitle: "Towards Open Schooling (Independent NIOS & State Board)",
     description: "Self-reliant study preparing towards open schooling (independent NIOS and State SSC/HSC boards). 1:6 mentor ratio with practical task mastery.",
     banner: "/images/content_assets/03_programs_banners/paryay_juvenile_dschool.jpeg",
     bullets: [
@@ -49,29 +52,33 @@ const programs = [
       "Feral learning, character building & self-governed schedules"
     ],
     contact: "Dhayari, Sinhagad Road, Pune"
-  },
-  {
-    id: "ypolen",
-    tag: "Higher Education • Undergrad & Grad",
-    title: "yPOLEN",
-    marathi: "वाय-पोलेन",
-    subtitle: "Open Universities Support & Ecological Tech",
-    description: "Undergraduate and graduate support program for students enrolled in National and International Open Universities, bridging academics with Ground Reality Experiences (GRE).",
-    banner: "/images/content_assets/03_programs_banners/ypolen_banner.jpeg",
-    bullets: [
-      "Individual facilitation, mentoring & group grafting sessions",
-      "Self-learning & distance learning content support (Edify)",
-      "Ground Reality Experiences (GRE): referrals & field support",
-      "Full access to TurtleB media archives & PYPELiB"
-    ],
-    contact: "7448176874 • ypnexusf@gmail.com"
-  },
+  }
+];
+
+const higherEdProgram = {
+  id: "ypolen",
+  stage: "Higher Education Support • Undergrad & Grad",
+  title: "yPOLEN",
+  marathi: "वाय-पोलेन",
+  subtitle: "Open Universities Support & Ecological Tech",
+  description: "Undergraduate and graduate support program for students enrolled in National and International Open Universities, bridging academic degree study with Ground Reality Experiences (GRE).",
+  banner: "/images/content_assets/03_programs_banners/ypolen_banner.jpeg",
+  bullets: [
+    "Individual facilitation, mentoring & group grafting sessions",
+    "Self-learning & distance learning content support (Edify)",
+    "Ground Reality Experiences (GRE): referrals & field support",
+    "Full access to TurtleB media archives & PYPELiB"
+  ],
+  contact: "7448176874 • ypnexusf@gmail.com"
+};
+
+const needBasedPrograms = [
   {
     id: "wai",
-    tag: "Diagnostic • Ages 4 to 16",
+    stage: "75-Day Module • Ages 4 to 16",
     title: "WAI (Who Am I?)",
     marathi: "हू ॲम आय?",
-    subtitle: "75-Day Comprehensive Capability Diagnostic",
+    subtitle: "Comprehensive Diagnostic Assessment",
     description: "Specialized short-term diagnostic module providing an objective Learner Status Report across standards, subjects, and cognitive capabilities.",
     banner: "/images/content_assets/03_programs_banners/wai_who_am_i_1.jpeg",
     bullets: [
@@ -84,11 +91,11 @@ const programs = [
   },
   {
     id: "nero",
-    tag: "Intergenerational • Ages 2 to 100",
+    stage: "Screen-Free Learning • Ages 2 to 100",
     title: "NeRo (EcoLogic)",
     marathi: "नेरो",
-    subtitle: "Active, Screen-Free Lifelong Engagement",
-    description: "Hands-on, screen-free learning for all ages. Available as live on-field sessions in Pune or 1-on-1 remote mentoring across English, Marathi, and Hindi.",
+    subtitle: "Intergenerational Hands-On Engagement",
+    description: "Screen-free, active learning for all ages. Available as live on-field sessions in Pune or 1-on-1 remote mentoring across English, Marathi, and Hindi.",
     banner: "/images/content_assets/03_programs_banners/nero_program_poster.jpg",
     bullets: [
       "O! NeRo (2–14y): Hands-on maker activities away from TV & screens",
@@ -102,92 +109,246 @@ const programs = [
 ---
 
 <section id="programs" class="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-ink-200">
-  <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+  <div class="max-w-7xl mx-auto space-y-14 sm:space-y-20">
     
-    <!-- Section Header -->
+    <!-- Top Section Header -->
     <div class="reveal-item flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-ink-200">
       <div class="max-w-3xl space-y-3">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-subtle border border-lime-accent/50 text-[11px] font-mono uppercase tracking-wider text-brand-dark font-bold">
-          <span>03 / Complete Learning Continuum</span>
+          <span>Official Hierarchy • Learning Programs</span>
         </div>
         <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink-900 tracking-tight leading-[1.12]">
-          Our Programs: Learning across every life stage.
+          Our Programs: A Three-Branch Educational Ecosystem.
         </h2>
         <p class="text-base sm:text-lg text-ink-700 leading-relaxed">
-          From formative early childhood habitat learning to open university fellowships, our educational structure develops self-reliance without the artificial walls of rote exams.
+          Rather than a single school, YP Nexus operates a structured educational hierarchy divided into three distinct wings: <strong>Continuous Alternative Schooling</strong>, <strong>Higher Education Support</strong>, and <strong>Need-Based Diagnostic Modules</strong>.
         </p>
       </div>
 
-      <div class="flex items-center gap-2 text-xs font-mono text-ink-500">
-        <span class="w-2 h-2 rounded-full bg-lime-accent animate-pulse"></span>
-        <span>6 Structured Tiers • Pune Center</span>
+      <a 
+        href="/programs" 
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-xs active:scale-95 transition-all shrink-0"
+      >
+        <span>Explore Full Programs Page</span> &rarr;
+      </a>
+    </div>
+
+    <!-- ── BRANCH 1: PARYAY DSCHOOL (Continuous Alternative Schooling) ── -->
+    <div class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-ink-100 pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-brand-forest text-lime-accent flex items-center justify-center font-display font-black text-sm">
+            01
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-black text-ink-900 tracking-tight">
+              Branch 1: Paryay Dschool Continuum
+            </h3>
+            <p class="text-xs font-mono text-ink-500 uppercase tracking-wider">
+              Continuous Open Schooling • Balmitee &rarr; PND &rarr; PJD
+            </p>
+          </div>
+        </div>
+        <span class="text-xs font-semibold text-brand-forest bg-lime-subtle px-3 py-1 rounded-full border border-lime-accent/40 self-start sm:self-auto">
+          3-Stage Progressive Pathway
+        </span>
+      </div>
+
+      <!-- 3-Card Grid for Dschool Continuum -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+        {dschoolPrograms.map((prog, idx) => (
+          <div class="bg-canvas rounded-3xl p-6 border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300">
+            <div class="space-y-4">
+              <!-- Banner -->
+              <div class="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-ink-200/80 relative">
+                <img 
+                  src={prog.banner} 
+                  alt={prog.title} 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-dark/90 text-white backdrop-blur-xs">
+                  {prog.marathi}
+                </span>
+              </div>
+
+              <!-- Titles -->
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">
+                  {prog.stage}
+                </span>
+                <h4 class="font-display text-xl font-bold text-ink-900 tracking-tight">
+                  {prog.title}
+                </h4>
+                <p class="text-xs font-medium text-ink-600">
+                  {prog.subtitle}
+                </p>
+              </div>
+
+              <p class="text-xs sm:text-sm text-ink-700 leading-relaxed">
+                {prog.description}
+              </p>
+
+              <!-- Bullets -->
+              <ul class="space-y-1.5 pt-2 border-t border-ink-200/60">
+                {prog.bullets.map(b => (
+                  <li class="flex items-start gap-2 text-xs text-ink-800 leading-snug">
+                    <span class="text-brand-forest font-bold shrink-0">•</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mt-6 pt-3 border-t border-ink-200 flex items-center justify-between text-[11px] font-mono text-ink-500">
+              <span>{prog.contact}</span>
+              <a href="/programs#dschool" class="font-bold text-brand-dark hover:text-lime-hover transition-colors">
+                Details &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
 
-    <!-- Programs Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {programs.map((prog, idx) => (
-        <div class={`reveal-item reveal-delay-${(idx % 3) + 1} bg-canvas rounded-3xl p-6 sm:p-7 border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300`}>
+    <!-- ── BRANCH 2 & BRANCH 3 (Higher Ed & Need-Based) ── -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Branch 2: yPOLEN (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="flex items-center gap-3 border-b border-ink-100 pb-3">
+          <div class="w-8 h-8 rounded-xl bg-brand-forest text-lime-accent flex items-center justify-center font-display font-black text-sm">
+            02
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-black text-ink-900 tracking-tight">
+              Branch 2: yPOLEN
+            </h3>
+            <p class="text-xs font-mono text-ink-500 uppercase tracking-wider">
+              Undergraduate &amp; Graduate Fellowship Support
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-brand-dark text-white rounded-3xl p-6 sm:p-8 border border-ink-800 shadow-card flex flex-col justify-between group hover:border-lime-accent transition-all duration-300">
           <div class="space-y-4">
-            
-            <!-- Banner / Graphic -->
-            <div class="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-ink-200/80 relative">
+            <div class="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white/5 border border-white/10 relative">
               <img 
-                src={prog.banner} 
-                alt={`${prog.title} official banner`} 
+                src={higherEdProgram.banner} 
+                alt={higherEdProgram.title} 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
-              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-dark/90 text-white backdrop-blur-xs">
-                {prog.marathi}
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white text-ink-900">
+                {higherEdProgram.marathi}
               </span>
             </div>
 
-            <!-- Header Titles -->
             <div class="space-y-1">
-              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">
-                {prog.tag}
+              <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-lime-accent">
+                {higherEdProgram.stage}
               </span>
-              <h3 class="font-display text-2xl font-black text-ink-900 tracking-tight">
-                {prog.title}
-              </h3>
-              <p class="text-xs font-semibold text-ink-600 font-sans">
-                {prog.subtitle}
+              <h4 class="font-display text-2xl font-bold text-white tracking-tight">
+                {higherEdProgram.title}
+              </h4>
+              <p class="text-xs font-medium text-white/70">
+                {higherEdProgram.subtitle}
               </p>
             </div>
 
-            <!-- Description -->
-            <p class="text-xs sm:text-sm text-ink-700 leading-relaxed">
-              {prog.description}
+            <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
+              {higherEdProgram.description}
             </p>
 
-            <!-- Bullets from Authentic Materials -->
-            <ul class="space-y-1.5 pt-2 border-t border-ink-200/60">
-              {prog.bullets.map((b) => (
-                <li class="flex items-start gap-2 text-xs text-ink-800 leading-snug">
-                  <span class="text-brand-forest font-bold shrink-0">•</span>
+            <ul class="space-y-1.5 pt-2 border-t border-white/10">
+              {higherEdProgram.bullets.map(b => (
+                <li class="flex items-start gap-2 text-xs text-white/90 leading-snug">
+                  <span class="text-lime-accent font-bold shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-
           </div>
 
-          <!-- Bottom Footer -->
-          <div class="mt-6 pt-3 border-t border-ink-200 flex items-center justify-between text-[11px] font-mono text-ink-500">
-            <span>{prog.contact}</span>
-            <a 
-              href="#contact" 
-              class="font-bold text-brand-dark hover:text-lime-hover transition-colors flex items-center gap-1"
-            >
-              Inquire &rarr;
+          <div class="mt-6 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/60">
+            <span>{higherEdProgram.contact}</span>
+            <a href="/programs#ypolen" class="font-bold text-lime-accent hover:underline">
+              Learn More &rarr;
             </a>
           </div>
-
         </div>
-      ))}
+      </div>
+
+      <!-- Branch 3: NEED BASED (7 Cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="flex items-center gap-3 border-b border-ink-100 pb-3">
+          <div class="w-8 h-8 rounded-xl bg-brand-forest text-lime-accent flex items-center justify-center font-display font-black text-sm">
+            03
+          </div>
+          <div>
+            <h3 class="font-display text-2xl font-black text-ink-900 tracking-tight">
+              Branch 3: Need-Based Programs
+            </h3>
+            <p class="text-xs font-mono text-ink-500 uppercase tracking-wider">
+              Diagnostic &amp; Screen-Free Lifelong Engagement
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {needBasedPrograms.map((prog) => (
+            <div class="bg-lime-subtle/60 rounded-3xl p-6 border border-lime-accent/50 shadow-xs flex flex-col justify-between group hover:border-brand-forest hover:shadow-card transition-all duration-300">
+              <div class="space-y-4">
+                <div class="w-full aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-lime-accent/40 relative">
+                  <img 
+                    src={prog.banner} 
+                    alt={prog.title} 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-dark text-white">
+                    {prog.marathi}
+                  </span>
+                </div>
+
+                <div class="space-y-1">
+                  <span class="text-[10px] font-mono uppercase tracking-wider font-bold text-brand-forest">
+                    {prog.stage}
+                  </span>
+                  <h4 class="font-display text-xl font-bold text-ink-900 tracking-tight">
+                    {prog.title}
+                  </h4>
+                  <p class="text-xs font-medium text-ink-600">
+                    {prog.subtitle}
+                  </p>
+                </div>
+
+                <p class="text-xs text-ink-700 leading-relaxed">
+                  {prog.description}
+                </p>
+
+                <ul class="space-y-1.5 pt-2 border-t border-lime-accent/40">
+                  {prog.bullets.map(b => (
+                    <li class="flex items-start gap-2 text-xs text-ink-800 leading-snug">
+                      <span class="text-brand-forest font-bold shrink-0">•</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="mt-6 pt-3 border-t border-lime-accent/40 flex items-center justify-between text-[11px] font-mono text-ink-500">
+                <span class="truncate max-w-[150px]">{prog.contact}</span>
+                <a href="/programs#need-based" class="font-bold text-brand-dark hover:text-lime-hover transition-colors shrink-0">
+                  Details &rarr;
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
 
   </div>
 </section>
-

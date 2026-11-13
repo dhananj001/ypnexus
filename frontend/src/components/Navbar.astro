@@ -1,9 +1,22 @@
 ---
-// Top-grade Organic Editorial Bento Navbar
-// Sits neatly at the top of the single-viewport frame without excessive height.
+// Multipage Responsive Navbar for YP Nexus Foundation
+interface Props {
+  isStandalone?: boolean;
+}
+
+const { isStandalone = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: "Our Ethos", href: "/about" },
+  { label: "Pillars", href: "/initiatives" },
+  { label: "Our Programs", href: "/programs" },
+  { label: "Life in Action", href: "/gallery" },
+  { label: "Field Inquiries", href: "/faq" }
+];
 ---
 
-<header class="w-full pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 shrink-0">
+<header class={`w-full z-40 relative ${isStandalone ? 'bg-canvas/95 backdrop-blur-md border-b border-ink-200 sticky top-0 py-2.5 sm:py-3.5 px-3 sm:px-6 lg:px-8' : 'pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 shrink-0'}`}>
   <div class="max-w-7xl mx-auto flex items-center justify-between h-12 sm:h-14">
     
     <!-- Brand Signature -->
@@ -25,51 +38,100 @@
 
     <!-- Desktop Navigation Pill Links -->
     <nav class="hidden md:flex items-center gap-1 bg-white/90 backdrop-blur-md px-2 py-1 rounded-full border border-ink-200/80 shadow-xs text-xs sm:text-sm font-medium text-ink-700">
-      <a href="#about" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Our Ethos</a>
-      <a href="#initiatives" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Pillars</a>
-      <a href="#programs" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Our Programs</a>
-      <a href="#gallery" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Life in Action</a>
-      <a href="#faq" class="px-3.5 py-1 rounded-full hover:text-ink-900 hover:bg-canvas transition-colors">Field Inquiries</a>
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a 
+            href={link.href} 
+            class={`px-3.5 py-1.5 rounded-full transition-all ${
+              isActive 
+                ? 'bg-brand-dark text-white font-semibold shadow-2xs' 
+                : 'hover:text-ink-900 hover:bg-canvas'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
     </nav>
 
     <!-- Right Controls -->
     <div class="flex items-center gap-2 sm:gap-3">
       <a 
-        href="#support" 
+        href="/contact" 
         class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-xs active:scale-95 transition-all"
       >
         <span>Support Us</span>
       </a>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu Button with Toggle Icons -->
       <button 
         id="mobile-menu-btn"
         type="button" 
-        class="md:hidden w-8 h-8 rounded-full bg-white border border-ink-200 flex items-center justify-center text-ink-900 hover:bg-canvas transition-colors"
+        class="md:hidden w-9 h-9 rounded-full bg-white border border-ink-200 shadow-2xs flex items-center justify-center text-ink-900 hover:bg-canvas transition-colors"
         aria-label="Toggle Navigation Menu"
+        aria-expanded="false"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <!-- Hamburger Icon -->
+        <svg id="menu-icon-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <!-- Close (X) Icon -->
+        <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
   </div>
 
-  <!-- Mobile Drawer -->
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-x-3 top-16 bg-white/98 backdrop-blur-xl rounded-2xl p-5 shadow-float border border-ink-200 z-50 space-y-3">
-    <a href="#about" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Our Ethos</a>
-    <a href="#initiatives" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Pillars</a>
-    <a href="#programs" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Our Programs</a>
-    <a href="#gallery" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Life in Action (Gallery)</a>
-    <a href="#faq" class="mobile-nav-link block text-base font-semibold text-ink-900 hover:text-lime-hover py-1">Field Inquiries</a>
-    <div class="pt-3 border-t border-ink-100">
+  <!-- Mobile Dark Dimming Backdrop (Dismiss on Click) -->
+  <div 
+    id="mobile-backdrop" 
+    class="hidden md:hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-40 transition-opacity"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Mobile Drawer Menu: SOLID 100% OPAQUE WHITE BACKGROUND -->
+  <div 
+    id="mobile-menu" 
+    class="hidden md:hidden fixed inset-x-3.5 top-16 bg-white rounded-3xl p-5 shadow-2xl border border-ink-200 z-50 space-y-2 transition-all duration-200 ease-out"
+    style="background-color: #ffffff !important; opacity: 1 !important;"
+  >
+    <div class="flex items-center justify-between pb-3 border-b border-ink-100 text-[11px] font-mono uppercase tracking-wider font-bold text-ink-400">
+      <span>Navigation</span>
+      <span class="text-brand-forest">YP Nexus</span>
+    </div>
+
+    <div class="space-y-1.5 pt-1">
+      {navLinks.map((link, idx) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a 
+            href={link.href} 
+            class={`mobile-nav-link flex items-center justify-between text-base font-bold py-2.5 px-3.5 rounded-2xl transition-all ${
+              isActive 
+                ? 'bg-lime-subtle text-brand-dark font-extrabold border border-lime-accent/60 shadow-2xs' 
+                : 'text-ink-800 hover:text-ink-900 hover:bg-canvas border border-transparent'
+            }`}
+          >
+            <span>{link.label}</span>
+            <span class="text-xs font-mono font-normal text-ink-400">0{idx + 1}</span>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="pt-3 border-t border-ink-100 space-y-2">
       <a 
-        href="#support" 
-        class="mobile-nav-link block w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover transition-colors"
+        href="/contact" 
+        class="mobile-nav-link block w-full text-center py-3 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-xs transition-colors"
       >
-        Support Mission &rarr;
+        Support Mission &amp; Dialogue &rarr;
       </a>
+      <p class="text-[10px] text-center font-mono text-ink-400">
+        Dhayari Campus • Pune, India
+      </p>
     </div>
   </div>
 </header>
@@ -77,17 +139,59 @@
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('mobile-backdrop');
+  const iconHamburger = document.getElementById('menu-icon-hamburger');
+  const iconClose = document.getElementById('menu-icon-close');
   const links = document.querySelectorAll('.mobile-nav-link');
 
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+  function openMenu() {
+    if (menu && backdrop && iconHamburger && iconClose && btn) {
+      menu.classList.remove('hidden');
+      backdrop.classList.remove('hidden');
+      iconHamburger.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMenu() {
+    if (menu && backdrop && iconHamburger && iconClose && btn) {
+      menu.classList.add('hidden');
+      backdrop.classList.add('hidden');
+      iconHamburger.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (btn && menu && backdrop) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
+
+    backdrop.addEventListener('click', () => {
+      closeMenu();
     });
 
     links.forEach(link => {
       link.addEventListener('click', () => {
-        menu.classList.add('hidden');
+        closeMenu();
       });
+    });
+
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
     });
   }
 </script>

@@ -1,0 +1,297 @@
+---
+// Page: /initiatives - The Four Interconnected Working Pillars of YP Nexus Foundation
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const pillars = [
+  {
+    id: "paryay-dschool",
+    num: "01",
+    name: "Paryay Dschool",
+    marathi: "पर्याय डीस्कूल",
+    tagline: "Multilingual | Multi-Board | Open | Learning Sanctuary",
+    subtitle: "Alternative Education Sanctuary",
+    desc: "A living alternative to assembly-line schooling. Children learn without standard grade walls, rigid bells, or punitive homework. Guided by seasoned mentors at a strict 1:6 ratio, learners prepare independently Towards Open Schooling (NIOS & MsBOS).",
+    img: "/images/ypnexus-paryay-mentoring.jpg",
+    features: [
+      { title: "Towards Open Schooling", desc: "Independent registration for official 10th and 12th board certifications via NIOS / MsBOS." },
+      { title: "1:6 Mentor-to-Learner Ratio", desc: "Deeply observed individual learning portfolios and monthly joint dialogues with parents." },
+      { title: "Expeditions & Journeys", desc: "Frequent field study tours (EVs) and biodiversity explorations (JEEVs) across rural India." },
+      { title: "Hands-on Life Trades", desc: "Carpentry, cycle mechanics, organic cooking, and soil cultivation in our Yantralaya." }
+    ],
+    ctaText: "Explore Dschool Programs (Balmitee to PJD)",
+    ctaLink: "/programs#branch-1",
+    themeBg: "bg-white",
+    borderClr: "border-ink-200/90"
+  },
+  {
+    id: "piselt",
+    num: "02",
+    name: "PiSELT Institute",
+    marathi: "पायसेल्ट संस्था",
+    tagline: "Socio-Ecological Research • Audits • Capacity Building",
+    subtitle: "Studies in Ecology, Learning & Technology",
+    desc: "Empirical grassroots research and organizational capacity building. PiSELT conducts environmental audits, rural livelihood strengthening, and equips youth (ages 14–35) with Ground Reality Experiences (GRE).",
+    img: "/images/content_assets/05_piselt_capacity_materials/image27.jpeg",
+    features: [
+      { title: "Organisational Audits", desc: "Structuring ecological and organizational workflows for civic bodies and NGOs." },
+      { title: "Ground Reality Experience (GRE)", desc: "Immersive field modules connecting urban youth to rural and ecological frontline realities." },
+      { title: "Livelihood & Capacity Reforms", desc: "Practical apprenticeship frameworks that strengthen rural youth employment." },
+      { title: "Tailored Field Analytics", desc: "Actionable grassroots data and watershed analysis for community habitats." }
+    ],
+    ctaText: "Collaborate on Field Research",
+    ctaLink: "/contact",
+    themeBg: "bg-canvas",
+    borderClr: "border-ink-200/90"
+  },
+  {
+    id: "turtle-media",
+    num: "03",
+    name: "TurTle Media & High / Low Stories",
+    marathi: "टर्टल मीडिया आणि हाय/लो स्टोरीज",
+    tagline: "Documentaries • BAM Turtle Talkies • Multilingual Publishing",
+    subtitle: "Ecological Audio-Visuals & Literature",
+    desc: "Translating ecological research, biodiversity journeys, and learner discoveries into accessible documentaries, film broadcasts, and multilingual books. Operating our publishing label High & Low Stories and children's library BAMS.",
+    img: "/images/content_assets/04_turtle_media_materials/image24.jpeg",
+    features: [
+      { title: "BAM @ Turtle Talkies", desc: "Weekly non-commercial film screenings and critical discussions for youth and learners covering cinema, wildlife, and music." },
+      { title: "BAMS Children's Library", desc: "Thousands of rare Marathi, Hindi, and English children's books and literature nurturing parent-child co-reading." },
+      { title: "High & Low Stories", desc: "Independent publishing imprint documenting unsung grassroots heroes and ecological realities." },
+      { title: "Documentary Film Production", desc: "Field-recorded audio-visuals capturing Western Ghats biodiversity and community lore." }
+    ],
+    ctaText: "Join Turtle Talkies & Library",
+    ctaLink: "/contact",
+    themeBg: "bg-white",
+    borderClr: "border-ink-200/90"
+  },
+  {
+    id: "habitats",
+    num: "04",
+    name: "Community Habitats & Agro-Ecology",
+    marathi: "सामुदायिक अधिवास आणि कृषी-पर्यावरण",
+    tagline: "Native Soil Sensitization • Living Neighborhoods • Conservation",
+    subtitle: "Living Ecosystems & Neighborhoods",
+    desc: "Creating sustainable community habitats where children, youth, and elders co-exist in direct relationship with native soil, organic food production, indigenous seeds, and zero-chemical natural living.",
+    img: "/images/content_assets/08_activity_photographs_section_g/image53.jpeg",
+    features: [
+      { title: "Native Soil Sensitization", desc: "Hands-on engagement with living earth, natural compost pits, and local microorganisms." },
+      { title: "Intergenerational Living", desc: "Shared community spaces where wisdom flows freely between elders and toddlers." },
+      { title: "Sahyadri Biodiversity Conservation", desc: "Preserving local indigenous flora, seed banks, and traditional agro-ecological wisdom." },
+      { title: "Screen-Free Living Sanctuaries", desc: "Open courtyards and verandas where physical play replaces digital confinement." }
+    ],
+    ctaText: "Visit Our Pune Community Habitats",
+    ctaLink: "/contact",
+    themeBg: "bg-lime-subtle/50",
+    borderClr: "border-lime-accent/60"
+  }
+];
+
+const synergyFlow = [
+  {
+    step: "01",
+    pillar: "Paryay Dschool",
+    role: "Learners & Questions",
+    desc: "Children explore real tools, soil, and living inquiries, generating authentic questions about nature and society."
+  },
+  {
+    step: "02",
+    pillar: "PiSELT Institute",
+    role: "Grassroots Research",
+    desc: "Field researchers conduct empirical audits and Ground Reality Experiences (GRE) to produce scientific understanding."
+  },
+  {
+    step: "03",
+    pillar: "TurTle Media",
+    role: "Publishing & Films",
+    desc: "Findings are documented into BAM Turtle Talkies screenings, children's books, and High & Low Stories publications."
+  },
+  {
+    step: "04",
+    pillar: "Community Habitats",
+    role: "Living Ground",
+    desc: "Native soil habitats and neighborhoods provide the living soil and community where learners thrive in perpetuity."
+  }
+];
+---
+
+<Layout 
+  title="The Four Working Pillars | YP Nexus Foundation"
+  description="Explore the four interconnected working pillars of YP Nexus Foundation in Pune, India: Paryay Dschool, PiSELT Leadership & Research, TurTle Media Publishing, and Community Habitats."
+>
+  <Navbar isStandalone={true} />
+
+  <main class="flex-grow">
+    
+    <!-- ── 1. EDITORIAL HERO ── -->
+    <section class="w-full py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white border-b border-white/10 relative overflow-hidden">
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-lime-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-mono uppercase tracking-wider text-lime-accent font-bold">
+          <span>02 / Four Working Pillars</span>
+        </div>
+        
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] [text-wrap:balance]">
+          An interconnected ecosystem for an <span class="text-lime-accent underline decoration-lime-accent/40 decoration-4 underline-offset-4">ecologically sensitive</span> life.
+        </h1>
+        
+        <p class="text-base sm:text-lg text-white/80 max-w-3xl leading-relaxed">
+          YP Nexus is not merely a single school—it is a self-sustaining societal organism operating across four vital domains: open alternative schooling, socio-ecological research, documentary publishing, and living community habitats.
+        </p>
+
+        <!-- Quick Jump Links -->
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono">
+          <a href="#paryay-dschool" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-lime-accent hover:text-ink-900 border border-white/20 text-white transition-all">
+            01 / Paryay Dschool &darr;
+          </a>
+          <a href="#piselt" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-lime-accent hover:text-ink-900 border border-white/20 text-white transition-all">
+            02 / PiSELT Institute &darr;
+          </a>
+          <a href="#turtle-media" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-lime-accent hover:text-ink-900 border border-white/20 text-white transition-all">
+            03 / TurTle Media &darr;
+          </a>
+          <a href="#habitats" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-lime-accent hover:text-ink-900 border border-white/20 text-white transition-all">
+            04 / Community Habitats &darr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. VISUAL ECOSYSTEM SYNERGY DIAGRAM (Cognitive Mental Model) ── -->
+    <section class="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-canvas border-b border-ink-200">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <span class="text-[11px] font-mono uppercase tracking-widest text-brand-forest font-bold">
+            Ecosystem Synergy
+          </span>
+          <h2 class="font-display text-2xl sm:text-3xl font-black text-ink-900 tracking-tight">
+            How The 4 Pillars Feed Into Each Other
+          </h2>
+          <p class="text-xs sm:text-sm text-ink-600">
+            Each initiative enriches and sustains the others in a continuous ecological loop:
+          </p>
+        </div>
+
+        <!-- 4 Step Synergy Loop Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {synergyFlow.map((s, idx) => (
+            <div class="bg-white rounded-3xl p-6 border border-ink-200/90 shadow-2xs space-y-3 relative group hover:border-lime-accent transition-all">
+              <div class="flex items-center justify-between">
+                <span class="w-8 h-8 rounded-xl bg-lime-subtle text-brand-dark font-mono font-bold text-xs flex items-center justify-center">
+                  {s.step}
+                </span>
+                <span class="text-xs font-mono text-ink-400 font-bold">
+                  {idx < 3 ? 'Step ' + (idx + 1) + ' →' : '↺ Loop Complete'}
+                </span>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-brand-forest font-bold block">
+                  {s.role}
+                </span>
+                <h4 class="font-display text-lg font-bold text-ink-900">
+                  {s.pillar}
+                </h4>
+              </div>
+
+              <p class="text-xs text-ink-600 leading-relaxed">
+                {s.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. FOUR DETAILED PILLAR SECTIONS ── -->
+    {pillars.map((pillar) => (
+      <section id={pillar.id} class={`w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 ${pillar.themeBg} border-b ${pillar.borderClr}`}>
+        <div class="max-w-7xl mx-auto space-y-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Text Content Column -->
+            <div class={`lg:col-span-7 space-y-6 ${pillar.num === '02' || pillar.num === '04' ? 'order-1 lg:order-2' : ''}`}>
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-brand-forest">
+                    Pillar {pillar.num} • {pillar.subtitle}
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-canvas text-ink-700">
+                    {pillar.marathi}
+                  </span>
+                </div>
+                
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 tracking-tight">
+                  {pillar.name}
+                </h2>
+                
+                <p class="text-xs sm:text-sm font-semibold text-brand-forest uppercase tracking-wider font-mono">
+                  {pillar.tagline}
+                </p>
+              </div>
+
+              <p class="text-sm sm:text-base text-ink-700 leading-relaxed">
+                {pillar.desc}
+              </p>
+
+              <!-- 4 Feature Highlights Bento -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-ink-800">
+                {pillar.features.map((f) => (
+                  <div class="p-3.5 rounded-2xl bg-white border border-ink-200/80 shadow-2xs space-y-1">
+                    <span class="font-bold text-brand-forest block">✓ {f.title}</span>
+                    <p class="text-ink-600 leading-relaxed text-[11px]">{f.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div class="pt-2">
+                <a 
+                  href={pillar.ctaLink} 
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark text-white text-xs font-bold uppercase tracking-wider hover:bg-lime-hover hover:text-ink-900 shadow-xs transition-colors"
+                >
+                  {pillar.ctaText} &rarr;
+                </a>
+              </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class={`lg:col-span-5 rounded-3xl sm:rounded-4xl overflow-hidden border border-ink-200 shadow-card bg-earth-100 ${pillar.num === '02' || pillar.num === '04' ? 'order-2 lg:order-1' : ''}`}>
+              <img 
+                src={pillar.img} 
+                alt={`${pillar.name} showcase`} 
+                class="w-full h-full object-cover max-h-[500px]" 
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- ── 4. ENGAGEMENT BANNER ── -->
+    <section class="w-full py-14 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white">
+      <div class="max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 bg-white/5 border border-white/10 text-center space-y-6">
+        <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-lime-accent">
+          Collaborate Across Spheres
+        </span>
+        <h3 class="font-display text-2xl sm:text-4xl font-black text-white tracking-tight">
+          Want to join or support our working pillars?
+        </h3>
+        <p class="text-xs sm:text-sm text-white/70 max-w-xl mx-auto leading-relaxed">
+          Whether you want your child to join Paryay Dschool, your organization needs socio-ecological audits with PiSELT, or you wish to screen films with Turtle Talkies—we welcome co-learners.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <a href="/contact" class="px-7 py-3 rounded-full bg-lime-accent text-ink-900 font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors">
+            Connect With Our Foundation &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

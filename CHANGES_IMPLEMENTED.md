@@ -164,8 +164,18 @@ As requested by the client documents, text content was read and extracted from t
     - Locks page body scroll when modal is active.
   - **Desktop Editorial Grid:** Rich 3-column cards with "Tap to Expand" trigger.
 
-### 9. `frontend/src/pages/index.astro`
-- Imported and integrated both `<ProgramsContinuumSection />` and `<ActivityGallerySection />` into the main page flow.
+### 9. Multi-Page Architecture Transformation
+Transformed the website from a single-page anchor layout into a full **7-Page Static Website**:
+1. **Home (`/`)**: Main landing page with the single-viewport Hero, 4 Pillars overview, 3-Branch Learning Continuum summary, Life in Action gallery teaser, and FAQ accordion.
+2. **Our Programs (`/programs`)**: Dedicated page structured strictly around the client's official 3-branch hierarchy:
+   - **Branch 1: Paryay Dschool Continuum** (*Balmitee* &rarr; *PND* &rarr; *PJD*).
+   - **Branch 2: Higher Education** (*yPOLEN* Open University Support & GRE).
+   - **Branch 3: Need-Based Modular Programs** (*WAI Diagnostic* & *NeRo Lifelong*).
+3. **The 4 Pillars (`/initiatives`)**: In-depth individual sections for *Paryay Dschool*, *PiSELT Institute* (8 capacity domains), *TurTle Media & High/Low Stories*, and *Community Habitats*.
+4. **Life in Action Gallery (`/gallery`)**: Standalone full photo gallery with category filtering and native fullscreen lightbox viewer.
+5. **Our Ethos & Foundation (`/about`)**: Background on YP Nexus Foundation (Paryay Parisanstha), FLM methodology, and the Nilu Bhau Limaye Sankul campus in Pune.
+6. **Field Inquiries (`/faq`)**: Dedicated parent inquiry portal with the full collection of extracted questions regarding open schooling, no-homework philosophy, 1:6 ratio, and Vartul parenting courses.
+7. **Support & Contact (`/contact`)**: Interactive inquiry and admissions booking form, direct phone numbers, email channels, and charitable trust donation details.
 
 ---
 
@@ -176,10 +186,55 @@ As requested by the client documents, text content was read and extracted from t
 - [x] "NIOS Approved" replaced with "Towards Open Schooling".
 - [x] Hero CTA changed to "Explore LEARNING with YPNF".
 - [x] 4 Pillars verified across Hero and InitiativesGrid.
-- [x] 6-tier learning continuum created with authentic extracted banners and copy.
+- [x] 3-branch educational hierarchy implemented on both Home and dedicated `/programs` page.
+- [x] Multi-page routing verified: all 7 static pages compile with 0 errors.
 - [x] Activity gallery created with interactive category filters for field studies, life trades, creative floor art, and community cooking.
+- [x] Fullscreen native mobile viewer with touch swipes and keyboard shortcuts implemented.
 - [x] PiSELT 8-point capacity building domains added.
 - [x] TurTle Media updated with "High & Low Stories", BAM, and Library.
 - [x] Authentic Pune field study photography deployed across hero and feature cards.
 - [x] Comprehensive documentation markdown file created.
 
+
+---
+
+## 6. Psychology-Driven UX & Design System Upgrade Across All Subpages
+
+Following the Modern Organic Editorial Bento design language established on the home page, every subpage was elevated with cognitive psychology principles to remove parental friction, build profound trust, and make complex educational information instantly intuitive:
+
+### 1. Field Inquiries & Parent Guidance (`/faq`)
+- **Psychological Peace of Mind Badges:** 3 persistent assurance cards at the top addressing the top three parental anxieties:
+  1. *100% Degree Eligible:* Official NIOS/MsBOS standing recognized by AIU, UPSC, NEET, JEE & global colleges.
+  2. *1:6 Dedicated Attention:* No child is ever lost in the crowd or labeled.
+  3. *Zero Homework Tears:* Daily integrated rhythm of soil, tools, and reflection preserving joyful family evenings.
+- **Interactive Instant Search:** Real-time client-side keyword search (filtering across questions and answers).
+- **Category Filter Tabs:** Instant pill switching between *All Inquiries (12)*, *Accreditation & Boards (3)*, *Daily Sanctuary Life (3)*, *Parenting & Vartul (3)*, and *Admissions & Trust (3)*.
+- **Expand / Collapse All Controls:** One-click global toggle.
+- **Direct 1-Tap WhatsApp Trigger:** "Still have doubts? Ask a Mentor on WhatsApp" sticky card.
+
+### 2. Admissions Dialogue & Campus Visit (`/contact`)
+- **The 3-Step Mutual Alignment Roadmap (Zero Evaluation Pressure):**
+  - *Step 1: Informal Chai & Chat (45–60 mins)* — Friendly conversation over tea about the child's natural temperament; strictly no tests.
+  - *Step 2: Child Campus Discovery Day (Half Day)* — Child explores tools in Yantralaya, joins cooking, and walks hills without evaluation anxiety.
+  - *Step 3: Collaborative Co-Learning Agreement* — Joint alignment between mentors, parents, and learner.
+- **Direct 1-Tap Mentors Grid:** 4 dedicated mentor cards with direct WhatsApp pre-filled chat buttons and phone call buttons:
+  - Admissions & WAI Diagnostic (`9423789914`)
+  - Paryay Dschool & yPOLEN (`7448176874`)
+  - Programs & Vartul Parenting (`9921111087`)
+  - Parent Co-Learning Desk (`9657311794`)
+- **Interactive Visit Request Form:** Program pill selection, child age field, interactive radio buttons, and instant confirmation state with WhatsApp fallback.
+- **Sanctuary Zones Preview:** Dhayari campus highlights including Yantralaya, Bhojanalaya, BAMS Library, and Vanashala outdoor trails with Google Maps navigation link.
+
+### 3. Our Ethos & Sanctuary Blueprint (`/about`)
+- **A Day in the Life of a Learner Timeline:** 6-stage chronological bento demystifying the daily rhythm (Prabhat Vartul 9:30 AM &rarr; Yantralaya Trades 10:15 AM &rarr; Bhojan Sanskar 12:30 PM &rarr; BAMS Literary Circles 1:30 PM &rarr; Dhayari Hill Expeditions 3:00 PM &rarr; Sanchay Reflection 4:15 PM).
+- **The 5 PIESE Dimensions:** Physical Agility, Intellectual Inquiry, Emotional Resilience, Societal Orbits, and Ecological Sensitization with icons and child development outcomes.
+- **Conventional vs. Sanctuary Contrast Matrix:** High-contrast side-by-side bento with clear negative/positive visual badges.
+- **Campus Sanctuary Blueprint Bento:** 4 photo cards showcasing Dhayari campus zones.
+
+### 4. Four Working Pillars & Ecosystem Synergy (`/initiatives`)
+- **Visual Ecosystem Synergy Flow:** 4-step cyclical diagram showing how Paryay Dschool (Learners) &rarr; PiSELT (Grassroots Research) &rarr; TurTle Media (Films & Publishing) &rarr; Community Habitats (Living Ground) feed back into each other.
+- **Bento Pillar Showcases:** Visual proof tags, documentary photo assets, and clear call-to-actions for all 4 pillars.
+
+### 5. Life in Action Documentary Gallery (`/gallery`)
+- **Ethos & Archives Hero:** Highlighting 65+ authentic unstaged captures from Pune hills, tool workshops, and community cooking.
+- **Mobile Native Album Grid + Fullscreen Lightbox Viewer:** Touch swipe gestures, keyboard arrows, image counter, and bottom description drawer.
