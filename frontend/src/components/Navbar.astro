@@ -1,5 +1,5 @@
 ---
-// Multipage Responsive Navbar for YP Nexus Foundation
+// Multipage Responsive Navbar for YP Nexus Foundation with Hover Flyout Dropdowns & Mobile Accordions
 interface Props {
   isStandalone?: boolean;
 }
@@ -7,12 +7,99 @@ interface Props {
 const { isStandalone = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 
-const navLinks = [
-  { label: "Our Ethos", href: "/about" },
-  { label: "Pillars", href: "/initiatives" },
-  { label: "Our Programs", href: "/programs" },
-  { label: "Life in Action", href: "/gallery" },
-  { label: "Field Inquiries", href: "/faq" }
+interface SubItem {
+  label: string;
+  href: string;
+  badge: string;
+  desc: string;
+}
+
+interface ProgramSection {
+  heading: string;
+  items: SubItem[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  description: string;
+  isMega?: boolean;
+  subItems?: SubItem[];
+  sections?: ProgramSection[];
+}
+
+const navLinks: NavItem[] = [
+  {
+    label: "Our Ethos",
+    href: "/about",
+    description: "Sanctuary philosophy, FLM methodology & Dhayari campus",
+    subItems: [
+      { label: "The 4 Pillars of Ethos", href: "/about#four-pillars", badge: "Core", desc: "Learning, Ecology, Research & Habitats" },
+      { label: "Conventional vs. Sanctuary", href: "/about#comparison", badge: "Matrix", desc: "Why families transition away from exams" },
+      { label: "A Day in the Life", href: "/about#routine", badge: "Rhythm", desc: "9:30 AM to 4:30 PM natural learning flow" },
+      { label: "5 PIESE Dimensions", href: "/about#piese", badge: "FLM", desc: "Physical, Intellectual, Emotional, Societal & Ecological" },
+      { label: "Nilu Bhau Limaye Sankul", href: "/about#campus", badge: "Campus", desc: "Dhayari Pune sanctuary zones & workshop" }
+    ]
+  },
+  {
+    label: "Pillars",
+    href: "/initiatives",
+    description: "The four interconnected working initiatives of YP Nexus",
+    subItems: [
+      { label: "Paryay Dschool", href: "/initiatives#paryay-dschool", badge: "Pillar 01", desc: "Flagship alternative to assembly schooling (1:6 ratio)" },
+      { label: "PiSELT Institute", href: "/initiatives#piselt", badge: "Pillar 02", desc: "Socio-ecological research, audits & youth internships" },
+      { label: "TurTle Media & Publishing", href: "/initiatives#turtle-media", badge: "Pillar 03", desc: "High & Low Stories, BAM Talkies & BAMS Library" },
+      { label: "Community Habitats", href: "/initiatives#habitats", badge: "Pillar 04", desc: "Native soil protection & living agro-ecology" }
+    ]
+  },
+  {
+    label: "Our Programs",
+    href: "/programs",
+    isMega: true,
+    description: "The 3-Branch Educational Hierarchy for living realities",
+    sections: [
+      {
+        heading: "Branch 1: Paryay Dschool Continuum",
+        items: [
+          { label: "Balmitee", href: "/programs#balmitee", badge: "Ages 3–8", desc: "Formative habitat & tactile curiosity" },
+          { label: "PND (Novice Dschool)", href: "/programs#pnd", badge: "Ages 8–12", desc: "Community socialization & life trades" },
+          { label: "PJD (Juvenile Dschool)", href: "/programs#pjd", badge: "Ages 12–20", desc: "Towards Open Schooling (NIOS/MsBOS)" }
+        ]
+      },
+      {
+        heading: "Branch 2 & 3: Higher Ed & Need-Based",
+        items: [
+          { label: "yPOLEN Fellowship", href: "/programs#branch-2", badge: "Higher Ed", desc: "Open University support & field experiences" },
+          { label: "WAI Diagnostic", href: "/programs#wai", badge: "75 Days", desc: "Objective capability & learning status audit" },
+          { label: "NeRo (EcoLogic)", href: "/programs#nero", badge: "Ages 2–100", desc: "Screen-free maker learning for all ages" },
+          { label: "Vartul FLM Parent Circle", href: "/programs#vartul", badge: "Parents", desc: "18-session co-learning weekend dialogue" }
+        ]
+      }
+    ]
+  },
+  {
+    label: "Life in Action",
+    href: "/gallery",
+    description: "Documentary photography of authentic field learning",
+    subItems: [
+      { label: "All Visual Archives", href: "/gallery", badge: "65+ Photos", desc: "Unstaged moments across Western Ghats" },
+      { label: "Field Expeditions (EVs)", href: "/gallery", badge: "Sahyadri", desc: "Outdoor biodiversity & hill journeys" },
+      { label: "Yantralaya & Tools", href: "/gallery", badge: "Trades", desc: "Woodwork, bicycle repair & mechanics" },
+      { label: "Cooking & Kitchen Sanskar", href: "/gallery", badge: "Nutrition", desc: "Rolling rotis & community meal math" }
+    ]
+  },
+  {
+    label: "Field Inquiries",
+    href: "/faq",
+    description: "Clear, transparent answers for thoughtful families",
+    subItems: [
+      { label: "All Inquiries", href: "/faq", badge: "12 FAQs", desc: "Explore all parent & community inquiries" },
+      { label: "Accreditation & Boards", href: "/faq", badge: "Degrees", desc: "NIOS & MsBOS legal validity for college & UPSC" },
+      { label: "Sanctuary Life & Routine", href: "/faq", badge: "Zero Tears", desc: "No homework, 1:6 ratio & mixed-age peers" },
+      { label: "Parenting (Vartul FLM)", href: "/faq", badge: "Screen-Free", desc: "Brain development stages & home ecology" },
+      { label: "Fees & Admissions", href: "/faq", badge: "Transparent", desc: "Charitable trust fees & 3-step visit dialogue" }
+    ]
+  }
 ];
 ---
 
@@ -20,7 +107,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto flex items-center justify-between h-12 sm:h-14">
     
     <!-- Brand Signature -->
-    <a href="/" class="flex items-center gap-2.5 group">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0">
       <img 
         src="/images/ypnexus-logo.png" 
         alt="YP Nexus Foundation" 
@@ -36,32 +123,131 @@ const navLinks = [
       </div>
     </a>
 
-    <!-- Desktop Navigation Pill Links -->
-    <nav class="hidden md:flex items-center gap-1 bg-white/90 backdrop-blur-md px-2 py-1 rounded-full border border-ink-200/80 shadow-xs text-xs sm:text-sm font-medium text-ink-700">
+    <!-- Desktop Navigation Pill Links with Hover Dropdowns -->
+    <nav class="hidden md:flex items-center gap-1 bg-white/95 backdrop-blur-md px-2 py-1 rounded-full border border-ink-200/80 shadow-xs text-xs font-medium text-ink-700">
       {navLinks.map((link) => {
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
         return (
-          <a 
-            href={link.href} 
-            class={`px-3.5 py-1.5 rounded-full transition-all ${
-              isActive 
-                ? 'bg-brand-dark text-white font-semibold shadow-2xs' 
-                : 'hover:text-ink-900 hover:bg-canvas'
-            }`}
-          >
-            {link.label}
-          </a>
+          <div class="relative group/nav py-1">
+            <!-- Parent Pill Link -->
+            <a 
+              href={link.href} 
+              class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all text-xs font-semibold ${
+                isActive 
+                  ? 'bg-brand-dark text-white shadow-2xs' 
+                  : 'hover:text-ink-900 hover:bg-canvas'
+              }`}
+            >
+              <span>{link.label}</span>
+              <svg 
+                class="w-3 h-3 text-ink-400 group-hover/nav:text-ink-900 group-hover/nav:rotate-180 transition-transform duration-200" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+
+            <!-- Floating Flyout Dropdown -->
+            <div 
+              class={`absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 translate-y-1.5 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto transition-all duration-200 z-50 ${
+                link.isMega ? 'w-[560px]' : 'w-80'
+              }`}
+            >
+              <!-- Solid Opaque Card Container with hover bridge -->
+              <div 
+                class="bg-white rounded-3xl p-4 shadow-float border border-ink-200/90 text-left space-y-3"
+                style="background-color: #ffffff !important;"
+              >
+                <!-- Mini Header -->
+                <div class="flex items-center justify-between pb-2 border-b border-ink-100">
+                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-forest">
+                    {link.label}
+                  </span>
+                  <a href={link.href} class="text-[10px] font-mono font-bold text-ink-400 hover:text-brand-dark hover:underline">
+                    View All &rarr;
+                  </a>
+                </div>
+
+                <!-- Mega Menu Layout (for Our Programs) -->
+                {link.isMega && link.sections && (
+                  <div class="grid grid-cols-2 gap-4">
+                    {link.sections.map((sec) => (
+                      <div class="space-y-2">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-ink-400 block px-1">
+                          {sec.heading}
+                        </span>
+                        <div class="space-y-1">
+                          {sec.items.map((sub) => (
+                            <a 
+                              href={sub.href} 
+                              class="p-2 rounded-xl hover:bg-lime-subtle/80 hover:border-lime-accent/50 border border-transparent transition-all block group/item"
+                            >
+                              <div class="flex items-center justify-between">
+                                <span class="font-display font-bold text-xs text-ink-900 group-hover/item:text-brand-forest">
+                                  {sub.label}
+                                </span>
+                                <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-canvas text-ink-500">
+                                  {sub.badge}
+                                </span>
+                              </div>
+                              <p class="text-[10px] text-ink-500 line-clamp-1 mt-0.5">
+                                {sub.desc}
+                              </p>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <!-- Standard Single-Column Layout -->
+                {!link.isMega && link.subItems && (
+                  <div class="space-y-1">
+                    {link.subItems.map((sub) => (
+                      <a 
+                        href={sub.href} 
+                        class="p-2 rounded-xl hover:bg-lime-subtle/80 hover:border-lime-accent/50 border border-transparent transition-all block group/item"
+                      >
+                        <div class="flex items-center justify-between">
+                          <span class="font-display font-bold text-xs text-ink-900 group-hover/item:text-brand-forest">
+                            {sub.label}
+                          </span>
+                          <span class="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-canvas text-ink-500">
+                            {sub.badge}
+                          </span>
+                        </div>
+                        <p class="text-[10px] text-ink-500 line-clamp-1 mt-0.5">
+                          {sub.desc}
+                        </p>
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                <!-- Bottom Quick Strip -->
+                <div class="pt-2 border-t border-ink-100 flex items-center justify-between text-[10px] font-mono text-ink-400 px-1">
+                  <span class="truncate">{link.description}</span>
+                  <a href={link.href} class="font-bold text-brand-dark hover:text-lime-hover hover:underline shrink-0 ml-2">
+                    Open Page &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         );
       })}
     </nav>
 
     <!-- Right Controls -->
-    <div class="flex items-center gap-2 sm:gap-3">
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
       <a 
         href="/contact" 
         class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-ink-900 bg-lime-accent hover:bg-lime-hover shadow-xs active:scale-95 transition-all"
       >
-        <span>Support Us</span>
+        <span>Contact Us</span>
       </a>
 
       <!-- Mobile Menu Button with Toggle Icons -->
@@ -72,11 +258,9 @@ const navLinks = [
         aria-label="Toggle Navigation Menu"
         aria-expanded="false"
       >
-        <!-- Hamburger Icon -->
         <svg id="menu-icon-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <!-- Close (X) Icon -->
         <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -92,36 +276,104 @@ const navLinks = [
     aria-hidden="true"
   ></div>
 
-  <!-- Mobile Drawer Menu: SOLID 100% OPAQUE WHITE BACKGROUND -->
+  <!-- Mobile Drawer Menu: SOLID 100% OPAQUE WHITE BACKGROUND WITH ACCORDIONS -->
   <div 
     id="mobile-menu" 
-    class="hidden md:hidden fixed inset-x-3.5 top-16 bg-white rounded-3xl p-5 shadow-2xl border border-ink-200 z-50 space-y-2 transition-all duration-200 ease-out"
+    class="hidden md:hidden fixed inset-x-3.5 top-16 max-h-[82vh] overflow-y-auto bg-white rounded-3xl p-5 shadow-2xl border border-ink-200 z-50 space-y-3 transition-all duration-200 ease-out"
     style="background-color: #ffffff !important; opacity: 1 !important;"
   >
     <div class="flex items-center justify-between pb-3 border-b border-ink-100 text-[11px] font-mono uppercase tracking-wider font-bold text-ink-400">
-      <span>Navigation</span>
+      <span>Navigation Menu</span>
       <span class="text-brand-forest">YP Nexus</span>
     </div>
 
-    <div class="space-y-1.5 pt-1">
+    <!-- Mobile Accordion Links -->
+    <div class="space-y-2 pt-1" id="mobile-nav-accordion-container">
       {navLinks.map((link, idx) => {
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        const hasSub = link.isMega ? (link.sections && link.sections.length > 0) : (link.subItems && link.subItems.length > 0);
+
         return (
-          <a 
-            href={link.href} 
-            class={`mobile-nav-link flex items-center justify-between text-base font-bold py-2.5 px-3.5 rounded-2xl transition-all ${
-              isActive 
-                ? 'bg-lime-subtle text-brand-dark font-extrabold border border-lime-accent/60 shadow-2xs' 
-                : 'text-ink-800 hover:text-ink-900 hover:bg-canvas border border-transparent'
-            }`}
-          >
-            <span>{link.label}</span>
-            <span class="text-xs font-mono font-normal text-ink-400">0{idx + 1}</span>
-          </a>
+          <div class="border border-ink-100 rounded-2xl overflow-hidden bg-canvas/40">
+            <!-- Row: Label + Accordion Toggle -->
+            <div class="flex items-center justify-between p-2.5">
+              <a 
+                href={link.href} 
+                class={`mobile-nav-link text-sm font-bold transition-colors ${
+                  isActive ? 'text-brand-forest font-extrabold' : 'text-ink-900 hover:text-brand-forest'
+                }`}
+              >
+                <span>{link.label}</span>
+              </a>
+
+              {hasSub && (
+                <button 
+                  type="button" 
+                  class="mobile-accordion-btn w-8 h-8 rounded-xl bg-white border border-ink-200/80 flex items-center justify-center text-ink-600 hover:bg-lime-subtle transition-transform"
+                  data-target={`sub-accordion-${idx}`}
+                  aria-expanded="false"
+                  aria-label={`Toggle ${link.label} sub-items`}
+                >
+                  <svg class="w-3.5 h-3.5 accordion-chevron transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            <!-- Expandable Sub-items Container -->
+            {hasSub && (
+              <div id={`sub-accordion-${idx}`} class="hidden px-3 pb-3 pt-1 border-t border-ink-100/70 bg-white">
+                <div class="space-y-1.5 pt-1 pl-2 border-l-2 border-lime-accent">
+                  <!-- Mega Items (Flattened for clean mobile view) -->
+                  {link.isMega && link.sections && link.sections.map((sec) => (
+                    <div class="space-y-1 pt-1">
+                      <span class="text-[9px] font-mono uppercase tracking-wider text-ink-400 font-bold block pt-1">
+                        {sec.heading}
+                      </span>
+                      {sec.items.map((sub) => (
+                        <a 
+                          href={sub.href} 
+                          class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs text-ink-800 hover:bg-lime-subtle hover:text-brand-dark transition-colors"
+                        >
+                          <span class="font-medium">{sub.label}</span>
+                          <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-canvas text-ink-500">
+                            {sub.badge}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  ))}
+
+                  <!-- Standard Sub-items -->
+                  {!link.isMega && link.subItems && link.subItems.map((sub) => (
+                    <a 
+                      href={sub.href} 
+                      class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs text-ink-800 hover:bg-lime-subtle hover:text-brand-dark transition-colors"
+                    >
+                      <span class="font-medium">{sub.label}</span>
+                      <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-canvas text-ink-500">
+                        {sub.badge}
+                      </span>
+                    </a>
+                  ))}
+
+                  <!-- Overview Page Link -->
+                  <a 
+                    href={link.href} 
+                    class="mobile-nav-link block py-1.5 px-2 text-[11px] font-mono font-bold text-brand-forest hover:underline pt-2"
+                  >
+                    View All {link.label} &rarr;
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         );
       })}
     </div>
 
+    <!-- Mobile Drawer Footer -->
     <div class="pt-3 border-t border-ink-100 space-y-2">
       <a 
         href="/contact" 
@@ -130,7 +382,7 @@ const navLinks = [
         Support Mission &amp; Dialogue &rarr;
       </a>
       <p class="text-[10px] text-center font-mono text-ink-400">
-        Dhayari Campus • Pune, India
+        Nilu Bhau Limaye Sankul • Dhayari, Pune
       </p>
     </div>
   </div>
@@ -143,6 +395,7 @@ const navLinks = [
   const iconHamburger = document.getElementById('menu-icon-hamburger');
   const iconClose = document.getElementById('menu-icon-close');
   const links = document.querySelectorAll('.mobile-nav-link');
+  const accordionBtns = document.querySelectorAll('.mobile-accordion-btn');
 
   function openMenu() {
     if (menu && backdrop && iconHamburger && iconClose && btn) {
@@ -166,6 +419,7 @@ const navLinks = [
     }
   }
 
+  // Toggle Mobile Menu Drawer
   if (btn && menu && backdrop) {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -181,9 +435,34 @@ const navLinks = [
       closeMenu();
     });
 
+    // Close on any link click
     links.forEach(link => {
       link.addEventListener('click', () => {
         closeMenu();
+      });
+    });
+
+    // Mobile Accordion Toggle
+    accordionBtns.forEach(accBtn => {
+      accBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = accBtn.getAttribute('data-target');
+        if (!targetId) return;
+        const targetContainer = document.getElementById(targetId);
+        const chevron = accBtn.querySelector('.accordion-chevron');
+
+        if (targetContainer) {
+          const isClosed = targetContainer.classList.contains('hidden');
+          if (isClosed) {
+            targetContainer.classList.remove('hidden');
+            accBtn.setAttribute('aria-expanded', 'true');
+            if (chevron) chevron.classList.add('rotate-180');
+          } else {
+            targetContainer.classList.add('hidden');
+            accBtn.setAttribute('aria-expanded', 'false');
+            if (chevron) chevron.classList.remove('rotate-180');
+          }
+        }
       });
     });
 

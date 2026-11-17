@@ -2,6 +2,13 @@
 // Section: Activity Gallery (Authentic Field & Activity Photographs)
 // Responsive Desktop Grid + Mobile Native App Photos Grid + Fullscreen Mobile Lightbox Viewer
 
+interface Props {
+  initialLimit?: number; // Optional limit for initial visible items (e.g. 3 for 1 line on desktop)
+  showViewAllLink?: boolean;
+}
+
+const { initialLimit, showViewAllLink = true } = Astro.props;
+
 const galleryItems = [
   {
     id: "g1",
@@ -181,7 +188,7 @@ const galleryItems = [
           type="button"
           data-category={item.category}
           data-index={idx}
-          class="gallery-card mobile-photo-card text-left relative aspect-square rounded-2xl overflow-hidden bg-earth-200 border border-ink-200/80 shadow-2xs group focus:outline-none active:scale-[0.98] transition-transform"
+          class={`gallery-card mobile-photo-card text-left relative aspect-square rounded-2xl overflow-hidden bg-earth-200 border border-ink-200/80 shadow-2xs group focus:outline-none active:scale-[0.98] transition-transform ${initialLimit && idx >= (initialLimit === 3 ? 2 : initialLimit) ? 'hidden gallery-extra-item' : ''}`}
           aria-label={`Open photo ${item.title}`}
         >
           <img 
@@ -213,7 +220,7 @@ const galleryItems = [
         <div 
           data-category={item.category}
           data-index={idx}
-          class="gallery-card desktop-photo-card reveal-item bg-white rounded-3xl overflow-hidden border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300 cursor-pointer"
+          class={`gallery-card desktop-photo-card bg-white rounded-3xl overflow-hidden border border-ink-200/90 shadow-xs flex flex-col justify-between group hover:border-lime-accent hover:shadow-card transition-all duration-300 cursor-pointer ${initialLimit && idx >= initialLimit ? 'hidden gallery-extra-item' : 'reveal-item'}`}
         >
           <!-- Image Frame -->
           <div class="w-full aspect-[4/3] overflow-hidden bg-earth-100 relative">
@@ -253,6 +260,30 @@ const galleryItems = [
         </div>
       ))}
     </div>
+
+    <!-- ── 3. SHOW MORE TOGGLE & DEDICATED GALLERY PAGE LINK ── -->
+    {initialLimit && (
+      <div class="pt-6 sm:pt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 border-t border-ink-200">
+        <button
+          type="button"
+          id="gallery-show-more-btn"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark hover:bg-brand-forest text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm cursor-pointer active:scale-95"
+        >
+          <span id="gallery-show-more-text">Show More Moments ({galleryItems.length - initialLimit}+ More)</span>
+          <svg id="gallery-show-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <a
+          href="/gallery"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-canvas hover:bg-ink-100 text-brand-dark border border-ink-200 text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:border-brand-forest"
+        >
+          <span>Explore Dedicated Gallery Page</span>
+          <span>&rarr;</span>
+        </a>
+      </div>
+    )}
 
   </div>
 </section>
@@ -359,158 +390,192 @@ const galleryItems = [
 </div>
 
 <script define:vars={{ items: galleryItems }}>
-  // Filter Functionality
-  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const allCards = document.querySelectorAll('.gallery-card');
+  function initGallerySection() {
+    // ── Show More / Show Less Toggle (for Home / Limited View) ──
+    const showMoreBtn = document.getElementById('gallery-show-more-btn');
+    const showMoreText = document.getElementById('gallery-show-more-text');
+    const showMoreIcon = document.getElementById('gallery-show-more-icon');
+    let isExpanded = false;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
+    if (showMoreBtn) {
+      showMoreBtn.onclick = function (e) {
+        e.preventDefault();
+        isExpanded = !isExpanded;
+        const extraItems = document.querySelectorAll('.gallery-extra-item');
+        
+        extraItems.forEach(el => {
+          if (isExpanded) {
+            el.classList.remove('hidden');
+            // If it has reveal-item styling, make sure it is visible
+            el.classList.add('is-visible');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
 
-      // Update button active states
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark');
-        b.classList.add('bg-white', 'text-ink-700', 'border-ink-200');
+        if (showMoreText) {
+          showMoreText.textContent = isExpanded ? 'Show Fewer Moments' : `Show More Moments (${items.length - 3}+ More)`;
+        }
+
+        if (showMoreIcon) {
+          showMoreIcon.style.transform = isExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      };
+    }
+
+    // Filter Functionality
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const allCards = document.querySelectorAll('.gallery-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update button active states
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-brand-dark', 'text-white', 'border-brand-dark');
+          b.classList.add('bg-white', 'text-ink-700', 'border-ink-200');
+        });
+        btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
+        btn.classList.remove('bg-white', 'text-ink-700', 'border-ink-200');
+
+        // Show/Hide cards
+        allCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
-      btn.classList.add('bg-brand-dark', 'text-white', 'border-brand-dark');
-      btn.classList.remove('bg-white', 'text-ink-700', 'border-ink-200');
+    });
 
-      // Show/Hide cards
-      allCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          (card as HTMLElement).style.display = '';
-        } else {
-          (card as HTMLElement).style.display = 'none';
+    // ── Native Fullscreen Modal Logic ──
+    const modal = document.getElementById('gallery-viewer-modal');
+    const viewerImg = document.getElementById('viewer-image');
+    const viewerTitle = document.getElementById('viewer-title');
+    const viewerCaption = document.getElementById('viewer-caption');
+    const viewerLocation = document.getElementById('viewer-location');
+    const viewerCounter = document.getElementById('viewer-counter');
+    const viewerTag = document.getElementById('viewer-tag');
+    const closeBtn = document.getElementById('viewer-close-btn');
+    const prevBtn = document.getElementById('viewer-prev-btn');
+    const nextBtn = document.getElementById('viewer-next-btn');
+    const touchArea = document.getElementById('viewer-touch-area');
+
+    let currentIndex = 0;
+
+    function updateViewer(index) {
+      if (!items || items.length === 0) return;
+      if (index < 0) index = items.length - 1;
+      if (index >= items.length) index = 0;
+      currentIndex = index;
+
+      const cur = items[currentIndex];
+      if (!cur) return;
+
+      if (viewerImg) {
+        viewerImg.style.opacity = '0.4';
+        viewerImg.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+          viewerImg.setAttribute('src', cur.image);
+          viewerImg.setAttribute('alt', cur.title);
+          viewerImg.style.opacity = '1';
+          viewerImg.style.transform = 'scale(1)';
+        }, 100);
+      }
+
+      if (viewerTitle) viewerTitle.textContent = cur.title;
+      if (viewerCaption) viewerCaption.textContent = cur.caption;
+      if (viewerLocation) viewerLocation.textContent = `📍 ${cur.location}`;
+      if (viewerCounter) viewerCounter.textContent = `${currentIndex + 1} / ${items.length}`;
+      if (viewerTag) viewerTag.textContent = cur.tag;
+    }
+
+    function openViewer(index) {
+      updateViewer(index);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        requestAnimationFrame(() => {
+          modal.classList.remove('opacity-0');
+          modal.classList.add('opacity-100');
+        });
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeViewer() {
+      if (modal) {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }, 250);
+      }
+      document.body.style.overflow = '';
+    }
+
+    allCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.getAttribute('data-index') || '0', 10);
+        openViewer(idx);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeViewer);
+    if (prevBtn) prevBtn.addEventListener('click', () => updateViewer(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => updateViewer(currentIndex + 1));
+
+    if (touchArea) {
+      touchArea.addEventListener('click', (e) => {
+        if (e.target === touchArea || (e.target && e.target.tagName === 'DIV')) {
+          closeViewer();
         }
       });
-    });
-  });
-
-  // ── Native Fullscreen Modal Logic ──
-  const modal = document.getElementById('gallery-viewer-modal');
-  const viewerImg = document.getElementById('viewer-image');
-  const viewerTitle = document.getElementById('viewer-title');
-  const viewerCaption = document.getElementById('viewer-caption');
-  const viewerLocation = document.getElementById('viewer-location');
-  const viewerCounter = document.getElementById('viewer-counter');
-  const viewerTag = document.getElementById('viewer-tag');
-  const closeBtn = document.getElementById('viewer-close-btn');
-  const prevBtn = document.getElementById('viewer-prev-btn');
-  const nextBtn = document.getElementById('viewer-next-btn');
-  const touchArea = document.getElementById('viewer-touch-area');
-
-  let currentIndex = 0;
-
-  function updateViewer(index) {
-    if (!items || items.length === 0) return;
-    if (index < 0) index = items.length - 1;
-    if (index >= items.length) index = 0;
-    currentIndex = index;
-
-    const cur = items[currentIndex];
-    if (!cur) return;
-
-    // Fade animation on image change
-    if (viewerImg) {
-      viewerImg.style.opacity = '0.4';
-      viewerImg.style.transform = 'scale(0.96)';
-      setTimeout(() => {
-        viewerImg.setAttribute('src', cur.image);
-        viewerImg.setAttribute('alt', cur.title);
-        viewerImg.style.opacity = '1';
-        viewerImg.style.transform = 'scale(1)';
-      }, 100);
     }
 
-    if (viewerTitle) viewerTitle.textContent = cur.title;
-    if (viewerCaption) viewerCaption.textContent = cur.caption;
-    if (viewerLocation) viewerLocation.textContent = `📍 ${cur.location}`;
-    if (viewerCounter) viewerCounter.textContent = `${currentIndex + 1} / ${items.length}`;
-    if (viewerTag) viewerTag.textContent = cur.tag;
-  }
-
-  function openViewer(index) {
-    updateViewer(index);
-    if (modal) {
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      // Smooth fade-in
-      requestAnimationFrame(() => {
-        modal.classList.remove('opacity-0');
-        modal.classList.add('opacity-100');
-      });
-    }
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeViewer() {
-    if (modal) {
-      modal.classList.remove('opacity-100');
-      modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }, 250);
-    }
-    document.body.style.overflow = '';
-  }
-
-  // Bind clicks to all card elements (both mobile buttons & desktop cards)
-  allCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const idx = parseInt(card.getAttribute('data-index') || '0', 10);
-      openViewer(idx);
+    window.addEventListener('keydown', (e) => {
+      if (!modal || modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeViewer();
+      if (e.key === 'ArrowLeft') updateViewer(currentIndex - 1);
+      if (e.key === 'ArrowRight') updateViewer(currentIndex + 1);
     });
-  });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeViewer);
-  if (prevBtn) prevBtn.addEventListener('click', () => updateViewer(currentIndex - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => updateViewer(currentIndex + 1));
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-  // Dismiss on clicking backdrop outside of navigation buttons
-  if (touchArea) {
-    touchArea.addEventListener('click', (e) => {
-      if (e.target === touchArea || (e.target as HTMLElement).tagName === 'DIV') {
-        closeViewer();
-      }
-    });
-  }
+    if (touchArea) {
+      touchArea.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
 
-  // Keyboard navigation (Arrow keys + Escape)
-  window.addEventListener('keydown', (e) => {
-    if (!modal || modal.classList.contains('hidden')) return;
-    if (e.key === 'Escape') closeViewer();
-    if (e.key === 'ArrowLeft') updateViewer(currentIndex - 1);
-    if (e.key === 'ArrowRight') updateViewer(currentIndex + 1);
-  });
+      touchArea.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+    }
 
-  // ── Native Mobile Touch Swipes ──
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  if (touchArea) {
-    touchArea.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    touchArea.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-  }
-
-  function handleSwipe() {
-    const diff = touchEndX - touchStartX;
-    // Minimum 45px swipe threshold
-    if (Math.abs(diff) > 45) {
-      if (diff > 0) {
-        // Swiped right -> Previous photo
-        updateViewer(currentIndex - 1);
-      } else {
-        // Swiped left -> Next photo
-        updateViewer(currentIndex + 1);
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 45) {
+        if (diff > 0) {
+          updateViewer(currentIndex - 1);
+        } else {
+          updateViewer(currentIndex + 1);
+        }
       }
     }
   }
+
+  // Execute on load and Astro view transitions / hydration
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallerySection);
+  } else {
+    initGallerySection();
+  }
+  document.addEventListener('astro:page-load', initGallerySection);
+</script>
 </script>

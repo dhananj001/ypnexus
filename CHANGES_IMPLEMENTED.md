@@ -238,3 +238,59 @@ Following the Modern Organic Editorial Bento design language established on the 
 ### 5. Life in Action Documentary Gallery (`/gallery`)
 - **Ethos & Archives Hero:** Highlighting 65+ authentic unstaged captures from Pune hills, tool workshops, and community cooking.
 - **Mobile Native Album Grid + Fullscreen Lightbox Viewer:** Touch swipe gestures, keyboard arrows, image counter, and bottom description drawer.
+
+---
+
+## 7. Implementation of Remaining V04 Alignments & Visual Poster Integrations
+
+Following the audit of `Content/CONTENT ADDITIONS V04.docx`:
+
+### 1. Vartul FLM Parent Co-Learning Course (Visual Flyer & Dedicated Program Card)
+- **Image Deployed:** `frontend/public/images/content_assets/05_piselt_capacity_materials/image29.jpeg` (*"समजून घेऊया शिकणं! पालक व आजी-आजोबांसाठी १८ सत्रांचा कोर्स"*).
+- **Dedicated Card on `/programs`:** Added under Branch 03 (Need-Based & Co-Learning) alongside WAI and NeRo:
+  - 18 interactive sessions (online & on-campus at Dhayari).
+  - 4 modular tracks covering child brain development, digital screen-freedom, converting homework stress into natural inquiries, and emotional resilience.
+  - Direct WhatsApp co-learning helpline (`96573 11794`).
+- **Homepage Integration:** Added an explicit quick-link callout in `ProgramsContinuumSection.astro` guiding visiting parents directly to the course.
+
+### 2. The Four Pillars of Our Ethos (Directly from Diagram `data1.xml`)
+- **Implemented on `/about`:** Rendered the exact four pillars defined in the document's XML SmartArt:
+  1. **LEARNING:** Fundamental Learning Methodology (FLM) — experiential, multi-board, and child-centered without assembly-line grading.
+  2. **Ecological Perspective:** Reconnecting learners to native Sahyadri soil, flora, organic food preparation, and seasonal natural cycles.
+  3. **Documentation & Research Archives:** Empirical research via PiSELT and audio-visual documentary publishing via TurTle Media / High & Low Stories.
+  4. **Community Habitats:** Intergenerational living neighborhoods uniting children, youth, and elders.
+
+---
+
+## 8. Interactive Desktop Hover Flyout Dropdowns & Mobile Accordion Sub-Menus
+
+Implemented rich multi-tier navigation across both desktop and mobile in `frontend/src/components/Navbar.astro`:
+
+### 1. Desktop Hover Dropdowns (Modern Flyout Cards)
+- **Smooth Interaction:** Each nav pill item triggers a floating card on hover (`group-hover/nav:opacity-100 group-hover/nav:translate-y-0`) with subtle chevron rotation.
+- **Solid High-Contrast Surface:** 100% opaque card surface (`bg-white` with `shadow-float` and `border border-ink-200/90`), preventing background bleed.
+- **Specialized 2-Column Mega Menu for "Our Programs":**
+  - *Column 1:* **Branch 1: Paryay Dschool Continuum** (*Balmitee 3–8y*, *PND Novice 8–12y*, *PJD Juvenile 12–20y*).
+  - *Column 2:* **Branch 2 & 3: Higher Ed & Need-Based** (*yPOLEN Fellowship*, *WAI Diagnostic 75d*, *NeRo Screen-Free 2–100y*, *Vartul FLM Parent Circle*).
+- **Sub-Item Rich Metadata:** Each entry displays its title, target age / scope badge (e.g. `Ages 3–8`, `75 Days`, `Pillar 01`, `9:30–4:30`), and a one-line description.
+- **Quick Jump Anchors:** Direct linking to corresponding page sections (`/about#four-pillars`, `/programs#wai`, `/initiatives#piselt`, etc.).
+
+### 2. Mobile Responsive Accordions (Native App Pattern)
+- **Nested Accordion Toggles:** In the mobile menu drawer, each section has an expand/collapse button (`▾`) that rotates 180° when opened.
+- **Clean Indented Sub-Links:** Sub-items slide down with a lime accent border indicator (`border-l-2 border-lime-accent pl-2`), compact badges, and 44px+ touch targets.
+- **Scroll & Dismiss Handling:** Clicking any sub-item closes the mobile menu and smoothly scrolls to the anchor or navigates to the page.
+
+---
+
+## 9. Visual & Typography Polish in Initiatives Grid
+- **Updated Paryay Dschool Image (Left Card):** Replaced the indoor reading shot with `image52.jpeg` (`/images/ypnexus-paryay-sanctuary.jpg`), showcasing children actively engaged in outdoor woodwork and crafts in the red-soil courtyard outside the traditional veranda.
+- **Fixed Right Card Top Typography (PiSELT Card):**
+  - Adjusted the heading *"Studies in Ecology, Learning & Tech"* font sizing to `text-lg sm:text-xl lg:text-[1.32rem] xl:text-[1.5rem]` with `leading-snug` so it fits on a single line without the orphan word "Tech" dropping awkwardly to a second line.
+  - Added `whitespace-nowrap` and flex wrapping to the badge row (`[PiSELT Institute] (Name subject to change)`), ensuring clean spacing against the top-right circular action button.
+
+---
+
+## 10. Visual Proportions Fix on TurTle Media Card
+- **Fixed Aspect Ratio & Bleed:** Replaced the narrow vertical flyer (`image24.jpeg`), which previously left huge empty white sidebars inside an `aspect-[16/10]` container, with `image54.jpeg` (`/images/content_assets/08_activity_photographs_section_g/image54.jpeg`).
+- **Authentic Subject Matter:** The photo captures learners sitting on the floor in the **BAMS (Bee Around Media) Children's Multilingual Library**, surrounded by Marathi, Hindi, and English literature, perfectly illustrating TurTle Media's publishing and library initiative.
+- **Visual Balance:** Rendered with `aspect-[16/10]` and `object-cover` plus a discreet tag badge (`📚 BAMS Multilingual Library & Talkies`), establishing full visual symmetry with the Community Habitats card on the right.
